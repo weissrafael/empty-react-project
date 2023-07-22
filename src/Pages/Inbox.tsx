@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import EmptyState from 'Components/EmptyState/EmptyState';
 import Feed from 'Components/Feed/Feed';
@@ -12,6 +12,10 @@ function Inbox() {
     isError,
     data: dataFromApi,
   } = useContacts.useGetContacts();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

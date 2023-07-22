@@ -7,8 +7,10 @@ export const LoginContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 180px);
+  height: 100%;
   justify-content: center;
+  position: relative;
+  top: -70px;
   width: 100%;
   fieldset {
     border-radius: 22px !important;
