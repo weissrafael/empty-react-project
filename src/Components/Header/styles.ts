@@ -36,6 +36,10 @@ export const HeaderContainer = styled.nav`
   }
 `;
 
+export const HeaderChatContainer = styled(HeaderContainer)`
+  padding: 0;
+`;
+
 export const SiteLogo = styled.svg`
   cursor: pointer;
   margin-left: ${spacing.xxSmall};
@@ -51,6 +55,15 @@ export const NavigationTabs = styled.div`
   height: 100%;
   justify-content: flex-end;
   padding-right: ${spacing.xxSmall};
+  width: 100%;
+`;
+
+export const NavigationChat = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-start;
+  padding-left: ${spacing.xxSmall};
   width: 100%;
 `;
 

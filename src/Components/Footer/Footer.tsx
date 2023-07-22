@@ -7,16 +7,22 @@ import React from 'react';
 import CallButton from 'Components/CallButton/CallButton';
 import { ScreenLimiter, TabButton } from 'Styles/common.styles';
 
+import useCurrentPage from '../../Hooks/useCurrentPage';
+import { PagesEnum } from '../../Models/UserInterfaceResources';
+
 import {
-  TabRightButton,
   FooterContainer,
   LeftActions,
   NotificationBubble,
   RightActions,
+  TabRightButton,
 } from './styles';
 
 function Footer() {
+  const { activePage } = useCurrentPage.useCurrentPage();
   const mockNumberOfCalls = 7;
+
+  if (activePage === PagesEnum.login) return null;
 
   return (
     <footer>

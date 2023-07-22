@@ -1,7 +1,8 @@
-export enum TabsEnum {
+export enum PagesEnum {
   inbox = 'inbox',
   archived = 'archived',
   login = 'login',
+  chat = 'chat',
 }
 
 export enum VariantEnum {

@@ -5,20 +5,24 @@ import { useFetchContacts } from 'API/Queries/contact';
 
 import { formatContacts } from '../Mappers/ContactMapper';
 import { ContactResource } from '../Models/ContactResource';
-import { TabsEnum } from '../Models/UserInterfaceResources';
+import { PagesEnum } from '../Models/UserInterfaceResources';
 
 const useCurrentPage = () => {
-  const [activePage, setActivePage] = useState<TabsEnum | null>(TabsEnum.inbox);
+  const [activePage, setActivePage] = useState<PagesEnum | null>(
+    PagesEnum.inbox
+  );
   const location = useLocation();
 
   useEffect(() => {
     const path = location.pathname;
     if (path === '/inbox') {
-      setActivePage(TabsEnum.inbox);
+      setActivePage(PagesEnum.inbox);
     } else if (path === '/archived') {
-      setActivePage(TabsEnum.archived);
+      setActivePage(PagesEnum.archived);
     } else if (path === '/') {
-      setActivePage(TabsEnum.login);
+      setActivePage(PagesEnum.login);
+    } else {
+      setActivePage(PagesEnum.chat);
     }
   }, [location]);
 
