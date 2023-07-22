@@ -4,7 +4,7 @@ import Person2Icon from '@mui/icons-material/Person2';
 import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 
-import CallButton from 'Components/CallButton/CallButton';
+import NewChatButton from 'Components/NewChatButton/NewChatButton';
 import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter, TabButton } from 'Styles/common.styles';
@@ -36,7 +36,7 @@ function InboxFooter() {
               <Person2Icon />
             </TabButton>
           </LeftActions>
-          <CallButton />
+          <NewChatButton />
           <RightActions>
             <TabRightButton to="/inbox">
               <ContactsIcon />

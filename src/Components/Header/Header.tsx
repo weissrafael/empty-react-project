@@ -13,7 +13,9 @@ function Header() {
 
   return (
     <header>
-      {activePage === PagesEnum.inbox && <InboxHeader />}
+      {(activePage === PagesEnum.inbox || PagesEnum.contacts) && (
+        <InboxHeader />
+      )}
       {activePage === PagesEnum.chat && <ChatHeader />}
     </header>
   );

@@ -3,6 +3,7 @@ export enum PagesEnum {
   archived = 'archived',
   login = 'login',
   chat = 'chat',
+  contacts = 'contacts',
 }
 
 export enum VariantEnum {

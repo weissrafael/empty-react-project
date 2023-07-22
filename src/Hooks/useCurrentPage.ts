@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { useFetchContacts } from 'API/Queries/contact';
-
-import { formatContacts } from '../Mappers/ContactMapper';
-import { ContactResource } from '../Models/ContactResource';
 import { PagesEnum } from '../Models/UserInterfaceResources';
 
 const useCurrentPage = () => {
@@ -26,6 +22,8 @@ const useCurrentPage = () => {
         setActivePage(PagesEnum.inbox);
       } else if (path === '/archived') {
         setActivePage(PagesEnum.archived);
+      } else if (path === '/contacts') {
+        setActivePage(PagesEnum.contacts);
       } else if (path === '/') {
         setActivePage(PagesEnum.login);
       } else {

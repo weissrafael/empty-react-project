@@ -11,7 +11,7 @@ import {
 
 const { callButtonDiameter } = componentSize;
 
-export const CallButtonContainer = styled.div`
+export const NewChatButtonContainer = styled.div`
   align-items: center;
   background-color: ${colors.positive};
   border-radius: ${borderRadius.fullCircle};

@@ -12,6 +12,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import useCurrentPage from './Hooks/useCurrentPage';
 import Chat from './Pages/Chat';
+import Contacts from './Pages/Contacts';
 import { PageBody } from './Styles/common.styles';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Routes location={displayLocation}>
           <Route path="/" index element={<Login />} />
           <Route path="inbox" element={<Inbox />} />
+          <Route path="contacts" element={<Contacts />} />
           <Route path="chat/:id" element={<Chat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -3,10 +3,10 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter } from 'Styles/common.styles';
 
-import useCurrentPage from '../../../Hooks/useCurrentPage';
 import {
   HeaderContainer,
   NavigationTabs,
@@ -93,7 +93,7 @@ function InboxHeader() {
           </TopRightTabButton>
           <TopRightTabButton
             $active={activePage === PagesEnum.archived}
-            to="/archived"
+            to="/inbox"
           >
             <ArchiveIcon />
           </TopRightTabButton>
