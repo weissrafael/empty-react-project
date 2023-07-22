@@ -8,26 +8,44 @@ import { ContactResource } from '../Models/ContactResource';
 import { PagesEnum } from '../Models/UserInterfaceResources';
 
 const useCurrentPage = () => {
-  const [activePage, setActivePage] = useState<PagesEnum | null>(
-    PagesEnum.inbox
-  );
   const location = useLocation();
+  const [activePage, setActivePage] = useState<PagesEnum | null>(null);
+  const [displayLocation, setDisplayLocation] = useState(location);
+  const [transitionStage, setTransitionStage] = useState('fadeIn');
+
+  useEffect(() => {
+    if (location !== displayLocation) {
+      setTransitionStage('fadeOut');
+    }
+  }, [location, displayLocation]);
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === '/inbox') {
-      setActivePage(PagesEnum.inbox);
-    } else if (path === '/archived') {
-      setActivePage(PagesEnum.archived);
-    } else if (path === '/') {
-      setActivePage(PagesEnum.login);
-    } else {
-      setActivePage(PagesEnum.chat);
-    }
+    setTimeout(() => {
+      if (path === '/inbox') {
+        setActivePage(PagesEnum.inbox);
+      } else if (path === '/archived') {
+        setActivePage(PagesEnum.archived);
+      } else if (path === '/') {
+        setActivePage(PagesEnum.login);
+      } else {
+        setActivePage(PagesEnum.chat);
+      }
+    }, 500);
   }, [location]);
+
+  function onAnimationEnd() {
+    if (transitionStage === 'fadeOut') {
+      setTransitionStage('fadeIn');
+      setDisplayLocation(location);
+    }
+  }
 
   return {
     activePage,
+    onAnimationEnd,
+    transitionStage,
+    displayLocation,
   };
 };
 

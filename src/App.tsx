@@ -10,31 +10,18 @@ import NotFound from 'Pages/NotFound';
 
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
+import useCurrentPage from './Hooks/useCurrentPage';
 import Chat from './Pages/Chat';
 import { PageBody } from './Styles/common.styles';
 
 function App() {
-  const location = useLocation();
-
-  const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransitionStage] = useState('fadeIn');
-
-  useEffect(() => {
-    if (location !== displayLocation) setTransitionStage('fadeOut');
-  }, [location, displayLocation]);
+  const { onAnimationEnd, displayLocation, transitionStage } =
+    useCurrentPage.useCurrentPage();
 
   return (
-    <>
+    <span className={`${transitionStage}`} onAnimationEnd={onAnimationEnd}>
       <Header />
-      <PageBody
-        className={`${transitionStage}`}
-        onAnimationEnd={() => {
-          if (transitionStage === 'fadeOut') {
-            setTransitionStage('fadeIn');
-            setDisplayLocation(location);
-          }
-        }}
-      >
+      <PageBody>
         <Routes location={displayLocation}>
           <Route path="/" index element={<Login />} />
           <Route path="inbox" element={<Inbox />} />
@@ -43,7 +30,7 @@ function App() {
         </Routes>
       </PageBody>
       <Footer />
-    </>
+    </span>
   );
 }
 
