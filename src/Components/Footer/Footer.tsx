@@ -1,53 +1,20 @@
-import ContactsIcon from '@mui/icons-material/Contacts';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import Person2Icon from '@mui/icons-material/Person2';
-import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
-
-import CallButton from 'Components/CallButton/CallButton';
-import { ScreenLimiter, TabButton } from 'Styles/common.styles';
 
 import useCurrentPage from '../../Hooks/useCurrentPage';
 import { PagesEnum } from '../../Models/UserInterfaceResources';
 
-import {
-  FooterContainer,
-  LeftActions,
-  NotificationBubble,
-  RightActions,
-  TabRightButton,
-} from './styles';
+import ChatFooter from './ChatFooter/ChatFooter';
+import InboxFooter from './InboxFooter/InboxFooter';
 
 function Footer() {
   const { activePage } = useCurrentPage.useCurrentPage();
-  const mockNumberOfCalls = 7;
 
   if (activePage === PagesEnum.login) return null;
 
   return (
     <footer>
-      <FooterContainer>
-        <ScreenLimiter>
-          <LeftActions>
-            <TabButton to="/" $active={true}>
-              <LocalPhoneIcon />
-              <NotificationBubble>{mockNumberOfCalls}</NotificationBubble>
-            </TabButton>
-            <TabButton to="/inbox">
-              <Person2Icon />
-            </TabButton>
-          </LeftActions>
-          <CallButton />
-          <RightActions>
-            <TabRightButton to="/inbox">
-              <ContactsIcon />
-            </TabRightButton>
-            <TabRightButton to="/inbox">
-              <SettingsIcon />
-            </TabRightButton>
-          </RightActions>
-        </ScreenLimiter>
-      </FooterContainer>
+      {activePage === PagesEnum.inbox && <InboxFooter />}
+      {activePage === PagesEnum.chat && <ChatFooter />}
     </footer>
   );
 }
