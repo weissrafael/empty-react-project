@@ -1,10 +1,12 @@
 import ArchiveIcon from '@mui/icons-material/Archive';
 import InboxIcon from '@mui/icons-material/Inbox';
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { TabsEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter } from 'Styles/common.styles';
+
+import useCurrentPage from '../../Hooks/useCurrentPage';
 
 import {
   HeaderContainer,
@@ -14,23 +16,14 @@ import {
 } from './styles';
 
 function Header() {
-  const [activeTab, setActiveTab] = useState<TabsEnum | null>(TabsEnum.inbox);
-  const location = useLocation();
+  const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const path = location.pathname;
-    if (path === '/') {
-      setActiveTab(TabsEnum.inbox);
-    } else if (path === '/archived') {
-      setActiveTab(TabsEnum.archived);
-    }
-  }, [location]);
-
   function goToHome() {
-    setActiveTab(TabsEnum.inbox);
-    navigate('/');
+    navigate('/inbox');
   }
+
+  if (activePage === TabsEnum.login) return null;
 
   return (
     <header>
@@ -97,15 +90,13 @@ function Header() {
           </SiteLogo>
           <NavigationTabs>
             <TopRightTabButton
-              $active={activeTab === TabsEnum.inbox}
-              onClick={() => setActiveTab(TabsEnum.inbox)}
-              to="/"
+              $active={activePage === TabsEnum.inbox}
+              to="/inbox"
             >
               <InboxIcon />
             </TopRightTabButton>
             <TopRightTabButton
-              $active={activeTab === TabsEnum.archived}
-              onClick={() => setActiveTab(TabsEnum.archived)}
+              $active={activePage === TabsEnum.archived}
               to="/archived"
             >
               <ArchiveIcon />

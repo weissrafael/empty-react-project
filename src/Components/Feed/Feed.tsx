@@ -1,6 +1,6 @@
-import ContactCard from 'Components/ContactCard/ContactCard';
 import React from 'react';
 
+import ContactCard from 'Components/ContactCard/ContactCard';
 import { ContactResource } from 'Models/ContactResource';
 
 import { ContactsList } from './styles';

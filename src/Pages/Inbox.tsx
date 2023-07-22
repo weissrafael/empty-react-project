@@ -1,9 +1,9 @@
-import useContacts from 'Hooks/useContacts';
 import React from 'react';
 
 import EmptyState from 'Components/EmptyState/EmptyState';
 import Feed from 'Components/Feed/Feed';
 import SkeletonFeed from 'Components/SkeletonFeed/Feed';
+import useContacts from 'Hooks/useContacts';
 import { PageHeader } from 'Styles/common.styles';
 
 function Inbox() {

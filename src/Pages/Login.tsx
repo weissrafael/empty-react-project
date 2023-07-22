@@ -6,15 +6,10 @@ import RoundButton from '../Components/RoundButton/RoundButton';
 import { LoginContainer, LoginInput, Space } from '../Styles/login.styles';
 import { spacing } from '../Styles/styleGuide';
 
-interface Props {
-  setIsLoggedIn: (value: boolean) => void;
-}
-
-function Login({ setIsLoggedIn }: Props) {
+function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
     navigate('/inbox');
   };
 

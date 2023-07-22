@@ -37,7 +37,7 @@ export const text = {
 };
 
 export const borderType = {
-  activeTab: '3px solid',
+  activePage: '3px solid',
 };
 
 export const iconSize = {

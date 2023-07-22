@@ -57,7 +57,7 @@ export const NavigationTabs = styled.div`
 export const TopRightTabButton = styled(TabButton)`
   ${({ $active }) => css`
     align-items: center;
-    border-bottom: ${borderType.activeTab}
+    border-bottom: ${borderType.activePage}
       ${$active ? colors.positive : colors.transparent};
     border-top: none;
     margin-left: ${spacing.small};

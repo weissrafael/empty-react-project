@@ -19,7 +19,7 @@ export const MessageContent = styled.div<{
   isFromUser: boolean;
 }>`
   ${({ isFromUser }) => css`
-    background-color: ${isFromUser ? colors.gray10 : colors.positive};
+    background-color: ${isFromUser ? colors.gray10 : colors.positiveDark};
     border-radius: ${borderRadius.message};
     box-shadow: ${shadows.messageShadow};
     color: ${colors.white};

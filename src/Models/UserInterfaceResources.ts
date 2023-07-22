@@ -1,6 +1,7 @@
 export enum TabsEnum {
   inbox = 'inbox',
   archived = 'archived',
+  login = 'login',
 }
 
 export enum VariantEnum {

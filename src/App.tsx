@@ -17,19 +17,11 @@ function App() {
   const location = useLocation();
 
   const [displayLocation, setDisplayLocation] = useState(location);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [transitionStage, setTransitionStage] = useState('fadeIn');
 
   useEffect(() => {
     if (location !== displayLocation) setTransitionStage('fadeOut');
   }, [location, displayLocation]);
-
-  if (!isLoggedIn)
-    return (
-      <PageBody>
-        <Login setIsLoggedIn={setIsLoggedIn} />
-      </PageBody>
-    );
 
   return (
     <>
@@ -44,7 +36,7 @@ function App() {
         }}
       >
         <Routes location={displayLocation}>
-          <Route path="/" index element={<Inbox />} />
+          <Route path="/" index element={<Login />} />
           <Route path="inbox" element={<Inbox />} />
           <Route path="chat/:id" element={<Chat />} />
           <Route path="*" element={<NotFound />} />

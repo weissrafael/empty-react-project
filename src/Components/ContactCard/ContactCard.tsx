@@ -23,14 +23,17 @@ export default function ContactCard({ contact }: Props) {
   const navigate = useNavigate();
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
+  const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+
   function handleClick() {
     navigate('/chat/' + id);
   }
+
   return (
     <Card onClick={handleClick}>
       <ContactAvatar src={avatarUrl} />
       <ActivityInfo>
-        <UserName>{name}</UserName>
+        <UserName>{capitalName}</UserName>
         <LastSeenAt>{date}</LastSeenAt>
       </ActivityInfo>
     </Card>
