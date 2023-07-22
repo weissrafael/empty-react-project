@@ -44,6 +44,10 @@ export const ScreenLimiter = styled.div`
   width: 100%;
 `;
 
+export const ScreenLimiterChat = styled(ScreenLimiter)`
+  align-items: flex-end;
+`;
+
 export const ErrorImage = styled.img`
   margin-top: ${spacing.large};
   width: 18rem;

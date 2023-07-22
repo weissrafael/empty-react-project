@@ -3,9 +3,14 @@ import { ContactResource, ContactApiResource } from 'Models/ContactResource';
 export function formatContacts(
   contacts: ContactApiResource[]
 ): ContactResource[] {
+  console.log('contacts', contacts);
   return contacts.map((contact) => {
     return contactApiToFrontResource(contact);
   });
+}
+
+export function formatContact(contact: ContactApiResource): ContactResource {
+  return contactApiToFrontResource(contact);
 }
 
 const contactApiToFrontResource = (

@@ -5,7 +5,7 @@ import { ContactApiResource } from 'Models/ContactResource';
 
 // import { axiosRequest } from 'API/axiosInstance';
 
-const mockResponse: ContactApiResource[] = [
+const mockResponseList: ContactApiResource[] = [
   {
     id: 9,
     name: 'wessel',
@@ -53,10 +53,24 @@ const mockResponse: ContactApiResource[] = [
   },
 ];
 
+const mockResponseSingle: ContactApiResource = {
+  id: 9,
+  name: 'wessel',
+  last_seen_at: '2023-07-21T08:07:37.000000Z',
+};
+
 export const useFetchContacts = () => {
   return useQuery([QueryKeys.contactList], async () => {
     // const response = await axiosRequest.get<ContactApiResource[]>(`/user`);
     // return response.data;
-    return mockResponse;
+    return mockResponseList;
+  });
+};
+
+export const useFetchContact = (id: string) => {
+  return useQuery([QueryKeys.contact + id], async () => {
+    // const response = await axiosRequest.get<ContactApiResource>(`/user/${id}`);
+    // return response.data;
+    return mockResponseSingle;
   });
 };

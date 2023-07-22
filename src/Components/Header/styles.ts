@@ -9,6 +9,7 @@ import {
   screens,
   shadows,
   spacing,
+  text,
 } from 'Styles/styleGuide';
 
 const {
@@ -37,7 +38,8 @@ export const HeaderContainer = styled.nav`
 `;
 
 export const HeaderChatContainer = styled(HeaderContainer)`
-  padding: 0;
+  align-items: flex-end;
+  padding: 9px ${spacing.small};
 `;
 
 export const SiteLogo = styled.svg`
@@ -58,14 +60,7 @@ export const NavigationTabs = styled.div`
   width: 100%;
 `;
 
-export const NavigationChat = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  justify-content: flex-start;
-  padding-left: ${spacing.xxSmall};
-  width: 100%;
-`;
+export const NavigationChat = styled.div``;
 
 export const TopRightTabButton = styled(TabButton)`
   ${({ $active }) => css`
@@ -79,4 +74,42 @@ export const TopRightTabButton = styled(TabButton)`
       margin-left: ${spacing.medium};
     }
   `}
+`;
+
+export const TopLeftTabButton = styled(TopRightTabButton)`
+  border-bottom: none;
+  margin: 0;
+  padding: 0;
+  width: auto !important;
+  svg {
+    font-size: 2.8rem;
+  }
+`;
+
+export const UserName = styled.div`
+  align-items: center;
+  color: ${colors.gray10};
+  display: flex;
+  font-size: ${text.h1};
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+`;
+
+export const InfoContainer = styled.div`
+  align-items: flex-end;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  width: 100%;
+`;
+export const LastSeenAt = styled.div`
+  align-items: flex-end;
+  color: ${colors.gray9};
+  display: flex;
+  font-size: ${text.paragraph};
+  height: 100%;
 `;

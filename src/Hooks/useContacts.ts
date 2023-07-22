@@ -6,7 +6,7 @@ import { formatContacts } from '../Mappers/ContactMapper';
 import { ContactResource } from '../Models/ContactResource';
 
 const useGetContacts = () => {
-  const { data, isLoading, isError, refetch, isFetching } = useFetchContacts();
+  const { data, isLoading, isError } = useFetchContacts();
 
   const [formattedData, setFormattedData] = useState<ContactResource[]>([]);
 
@@ -28,8 +28,6 @@ const useGetContacts = () => {
     isLoading,
     isError,
     data: formattedData,
-    isFetching,
-    refetch,
   };
 };
 

@@ -11,20 +11,19 @@ function Inbox() {
     isLoading,
     isError,
     data: dataFromApi,
-    isFetching,
   } = useContacts.useGetContacts();
 
   return (
     <>
-      {!isError && !isLoading && !isFetching && dataFromApi.length > 0 && (
+      {!isError && !isLoading && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>Inbox</h1>
         </PageHeader>
       )}
-      {isFetching && <SkeletonFeed />}
+      {isLoading && <SkeletonFeed />}
       {/*{isError && !isLoading && <ErrorState />}*/}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
-      {!isError && !isLoading && !isFetching && <Feed data={dataFromApi} />}
+      {!isError && !isLoading && <Feed data={dataFromApi} />}
     </>
   );
 }
