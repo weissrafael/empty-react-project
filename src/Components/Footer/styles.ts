@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import styled from 'styled-components';
 
 import { TabButton } from 'Styles/common.styles';
@@ -14,7 +15,8 @@ import {
   text,
 } from 'Styles/styleGuide';
 
-const { footerHeight, notificationBubbleSize } = componentSize;
+const { footerHeight, notificationBubbleSize, chatFooterHeight } =
+  componentSize;
 
 export const FooterContainer = styled.div`
   align-items: center;
@@ -31,6 +33,34 @@ export const FooterContainer = styled.div`
   z-index: ${layerOrder.levelOne};
 `;
 
+export const ChatFooterContainer = styled(FooterContainer)`
+  height: auto;
+  padding-bottom: ${spacing.small};
+  padding-top: ${spacing.small};
+`;
+
+export const MessageInput = styled(TextField)`
+  height: 100%;
+  width: 100%;
+  & label.Mui-focused {
+    color: ${colors.positive};
+  }
+  & .MuiInput-underline:after {
+    border-bottom-color: ${colors.positive};
+  }
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: ${colors.positive} !important;
+    }
+    &:hover fieldset {
+      border-color: ${colors.positive};
+    }
+    &.Mui-focused fieldset {
+      border-color: ${colors.positive};
+    }
+  }
+`;
+
 export const LeftActions = styled.div`
   display: flex;
   height: 100%;
@@ -40,6 +70,14 @@ export const LeftActions = styled.div`
   @media (min-width: ${screens.small}px) {
     justify-content: flex-end;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding-left: ${spacing.small};
 `;
 
 export const RightActions = styled.div`

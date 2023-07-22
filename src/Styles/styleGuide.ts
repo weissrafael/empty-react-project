@@ -117,6 +117,7 @@ export const componentSize = {
   actionsContainerHeight: 50,
   contentBoxMaxWidth: 250,
   footerHeight: 60,
+  chatFooterHeight: 160,
   notificationBubbleSize: 18,
   siteLogoWidthMobile: 130,
   siteLogoWidthDesktop: 170,
