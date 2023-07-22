@@ -6,6 +6,8 @@ import SkeletonFeed from 'Components/SkeletonFeed/Feed';
 import useContacts from 'Hooks/useContacts';
 import { PageHeader } from 'Styles/common.styles';
 
+import FullScreenLoader from '../Components/FullscreenLoader/FullScreenLoader';
+
 function Contacts() {
   const {
     isLoading,
@@ -19,6 +21,7 @@ function Contacts() {
 
   return (
     <>
+      {/*<FullScreenLoader isLoading={true} />*/}
       {!isError && !isLoading && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>Contacts</h1>
