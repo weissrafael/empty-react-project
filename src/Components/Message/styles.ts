@@ -1,11 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { colors, spacing } from 'Styles/styleGuide';
+import { borderRadius, colors, shadows, spacing } from 'Styles/styleGuide';
 
-export const MessageBody = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding: ${spacing.small};
-  width: 100%;
+export const MessageBody = styled.div<{
+  isFromUser: boolean;
+}>`
+  ${({ isFromUser }) => css`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: ${spacing.small};
+    padding-left: ${isFromUser ? 0 : spacing.small};
+    padding-right: ${isFromUser ? spacing.small : 0};
+    width: 100%;
+  `}
+`;
+
+export const MessageContent = styled.div<{
+  isFromUser: boolean;
+}>`
+  ${({ isFromUser }) => css`
+    background-color: ${isFromUser ? colors.gray10 : colors.positive};
+    border-radius: ${borderRadius.message};
+    box-shadow: ${shadows.messageShadow};
+    color: ${colors.white};
+    padding: ${spacing.small};
+    text-align: ${isFromUser ? 'left' : 'right'};
+    width: 100%;
+  `}
 `;

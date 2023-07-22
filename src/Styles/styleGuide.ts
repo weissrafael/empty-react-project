@@ -70,9 +70,12 @@ export const shadows = {
   shadowDown4: '0 4px 5px 0 rgba(0, 0, 0, 0.06)',
   shadowDown6: '0 6px 10px 1px rgba(0, 0, 0, 0.06)',
   shadowDown8: '0 8px 10px 1px rgba(0, 0, 0, 0.07)',
+  shadowDown8darker: '0 4px 10px 1px rgba(0, 0, 0, 0.34)',
+  shadowDown10: '0 10px 10px 1px rgba(0, 0, 0, 0.17)',
   shadowCenter8: '5px 8px 10px 1px rgba(0, 0, 0, 0.06)',
   shadowCenter10: '0px 0px 10px 2px rgba(0,0,0,0.4);',
   shadowTop8: '2px -3px 7px 2px rgba(0,0,0,0.07);',
+  messageShadow: '5px 5px 10px rgba(0, 0, 0, 0.44)',
   itemShadow: `0px 5px 10px -2px #000000`,
 };
 
@@ -81,6 +84,7 @@ export const borderRadius = {
   roundButton: '30px',
   fullCircle: '50%',
   modal: '8px',
+  message: '20px',
 };
 
 export const transitions = {

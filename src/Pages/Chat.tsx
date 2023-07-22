@@ -13,7 +13,7 @@ function Chat() {
     isFetching,
   } = useMessages.useGetMessage(id || '');
 
-  return <ChatWindow messages={dataFromApi} />;
+  return <ChatWindow userId={id} messages={dataFromApi} />;
 }
 
 export default React.memo(Chat);

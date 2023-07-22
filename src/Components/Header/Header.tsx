@@ -1,7 +1,7 @@
 import ArchiveIcon from '@mui/icons-material/Archive';
 import InboxIcon from '@mui/icons-material/Inbox';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { TabsEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter } from 'Styles/common.styles';
@@ -16,6 +16,7 @@ import {
 function Header() {
   const [activeTab, setActiveTab] = useState<TabsEnum | null>(TabsEnum.inbox);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const path = location.pathname;
@@ -25,6 +26,11 @@ function Header() {
       setActiveTab(TabsEnum.archived);
     }
   }, [location]);
+
+  function goToHome() {
+    setActiveTab(TabsEnum.inbox);
+    navigate('/');
+  }
 
   return (
     <header>
@@ -36,6 +42,7 @@ function Header() {
             viewBox="0 0 486 168"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
+            onClick={goToHome}
           >
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g transform="translate(207.000000, 24.000000)">

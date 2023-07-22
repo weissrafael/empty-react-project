@@ -12,7 +12,7 @@ const useGetMessage = (id: string) => {
   function compareDates(a: MessageResource, b: MessageResource) {
     const dateA = new Date(a.sentAt);
     const dateB = new Date(b.sentAt);
-    return dateB.getTime() - dateA.getTime();
+    return dateA.getTime() - dateB.getTime();
   }
 
   useEffect(() => {
