@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import EmptyState from 'Components/EmptyState/EmptyState';
 import Feed from 'Components/Feed/Feed';
 import SkeletonFeed from 'Components/SkeletonFeed/Feed';
-import useContacts from 'Hooks/useContacts';
+import useConversations from 'Hooks/useConversations';
 import { PageHeader } from 'Styles/common.styles';
 
 function Inbox() {
@@ -11,7 +11,7 @@ function Inbox() {
     isLoading,
     isError,
     data: dataFromApi,
-  } = useContacts.useGetContacts();
+  } = useConversations.useGetConversations();
 
   useEffect(() => {
     window.scrollTo(0, 0);
