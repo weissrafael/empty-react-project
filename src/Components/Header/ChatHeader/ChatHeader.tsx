@@ -18,7 +18,6 @@ import {
 } from '../styles';
 
 function ChatHeader() {
-  const { activePage } = useCurrentPage.useCurrentPage();
   const { id, name, lastSeenAt } = useChatStore((state) => state.selectedUser);
   const date = formatTime(lastSeenAt);
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
