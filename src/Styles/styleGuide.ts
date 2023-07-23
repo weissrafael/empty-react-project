@@ -29,7 +29,7 @@ export const colors = {
 };
 
 export const text = {
-  h1: '2.3rem',
+  h1: '1.8rem',
   h2: '1.3rem',
   paragraph: '0.9rem',
   smallBody: '0.8rem',

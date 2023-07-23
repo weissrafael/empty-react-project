@@ -86,6 +86,10 @@ export const TopLeftTabButton = styled(TopRightTabButton)`
   }
 `;
 
+export const ChatContactAvatar = styled.img`
+  max-width: 42px;
+`;
+
 export const UserName = styled.div`
   align-items: center;
   color: ${colors.gray10};
@@ -95,7 +99,7 @@ export const UserName = styled.div`
   justify-content: center;
   position: absolute;
   right: 0;
-  top: 0;
+  top: -6px;
   width: 100%;
 `;
 
@@ -110,6 +114,11 @@ export const LastSeenAt = styled.div`
   align-items: flex-end;
   color: ${colors.gray9};
   display: flex;
-  font-size: ${text.paragraph};
+  font-size: ${text.smallBody};
   height: 100%;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 100%;
 `;

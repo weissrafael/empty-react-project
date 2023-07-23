@@ -10,8 +10,14 @@ import { formatTime } from 'Utils/contact';
 
 import { AWSUserAvatarUrl } from '../../../Constants/AWS';
 import { useChatStore } from '../../../Stores/chat';
-import { ContactAvatar } from '../../ContactCard/styles';
-import { HeaderChatContainer, TopLeftTabButton, UserName } from '../styles';
+import {
+  HeaderChatContainer,
+  InfoContainer,
+  TopLeftTabButton,
+  UserName,
+  ChatContactAvatar,
+  LastSeenAt,
+} from '../styles';
 
 function ChatHeader() {
   const { activePage } = useCurrentPage.useCurrentPage();
@@ -24,13 +30,13 @@ function ChatHeader() {
     <HeaderChatContainer>
       <ScreenLimiterChat>
         <UserName>{capitalName}</UserName>
+        <LastSeenAt>{date}</LastSeenAt>
         <TopLeftTabButton $active={activePage === PagesEnum.inbox} to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
-        {/*<InfoContainer>*/}
-        {/*  <LastSeenAt>{date}</LastSeenAt>*/}
-        {/*</InfoContainer>*/}
-        <ContactAvatar src={avatarUrl} />
+        <InfoContainer>
+          <ChatContactAvatar src={avatarUrl} />
+        </InfoContainer>
       </ScreenLimiterChat>
     </HeaderChatContainer>
   );
