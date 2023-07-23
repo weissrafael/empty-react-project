@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ContactResource } from 'Models/ContactResource';
 
 import { AWSUserAvatarUrl } from '../../Constants/AWS';
+import { useChatStore } from '../../Stores/chat';
 import { formatTime } from '../../Utils/contact';
 
 import {
@@ -24,9 +25,11 @@ export default function ContactCard({ contact }: Props) {
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+  const selectUser = useChatStore((state) => state.selectUser);
 
   function handleClick() {
     navigate('/chat/' + id);
+    selectUser(contact);
   }
 
   return (

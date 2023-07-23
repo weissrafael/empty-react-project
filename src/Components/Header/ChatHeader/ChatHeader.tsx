@@ -8,20 +8,17 @@ import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiterChat } from 'Styles/common.styles';
 import { formatTime } from 'Utils/contact';
 
-import {
-  HeaderChatContainer,
-  TopLeftTabButton,
-  UserName,
-  InfoContainer,
-  LastSeenAt,
-} from '../styles';
+import { AWSUserAvatarUrl } from '../../../Constants/AWS';
+import { useChatStore } from '../../../Stores/chat';
+import { ContactAvatar } from '../../ContactCard/styles';
+import { HeaderChatContainer, TopLeftTabButton, UserName } from '../styles';
 
 function ChatHeader() {
   const { activePage } = useCurrentPage.useCurrentPage();
-  const { id } = useParams();
-  const { lastSeenAt, name } = useSingleUser.useGetSingleUser(id ?? '');
+  const { id, name, lastSeenAt } = useChatStore((state) => state.selectedUser);
   const date = formatTime(lastSeenAt);
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+  const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
 
   return (
     <HeaderChatContainer>
@@ -30,9 +27,10 @@ function ChatHeader() {
         <TopLeftTabButton $active={activePage === PagesEnum.inbox} to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
-        <InfoContainer>
-          <LastSeenAt>{date}</LastSeenAt>
-        </InfoContainer>
+        {/*<InfoContainer>*/}
+        {/*  <LastSeenAt>{date}</LastSeenAt>*/}
+        {/*</InfoContainer>*/}
+        <ContactAvatar src={avatarUrl} />
       </ScreenLimiterChat>
     </HeaderChatContainer>
   );
