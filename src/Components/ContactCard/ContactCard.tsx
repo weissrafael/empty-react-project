@@ -31,7 +31,7 @@ export default function ContactCard({ contact }: Props) {
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
   const selectUser = useChatStore((state) => state.selectUser);
-  const { isGroupMode, addUser, selectedUsers } = useGroupStore(
+  const { isGroupMode, addUser, selectedUsers, removeUser } = useGroupStore(
     (state) => state
   );
   const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
@@ -42,7 +42,11 @@ export default function ContactCard({ contact }: Props) {
   }
 
   function handleSelectionClick() {
-    addUser(contact);
+    if (isSelected) {
+      removeUser(contact);
+    } else {
+      addUser(contact);
+    }
   }
 
   useEffect(() => {

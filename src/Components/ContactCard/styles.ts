@@ -59,6 +59,7 @@ export const UserName = styled.div<{
     display: flex;
     font-size: ${text.h2};
     margin-bottom: ${spacing.xSmall};
+    transition: ${transitions.easeInOut2s};
   `}
 `;
 

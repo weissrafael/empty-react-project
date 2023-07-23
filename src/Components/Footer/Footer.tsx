@@ -13,9 +13,7 @@ function Footer() {
 
   return (
     <footer>
-      {(activePage === PagesEnum.inbox || PagesEnum.contacts) && (
-        <InboxFooter />
-      )}
+      {activePage === PagesEnum.inbox && <InboxFooter />}
       {activePage === PagesEnum.chat && <ChatFooter />}
     </footer>
   );
