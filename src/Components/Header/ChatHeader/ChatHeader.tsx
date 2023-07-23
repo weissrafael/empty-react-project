@@ -1,9 +1,7 @@
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 import useCurrentPage from 'Hooks/useCurrentPage';
-import useSingleUser from 'Hooks/useSingleUser';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiterChat } from 'Styles/common.styles';
 import { formatTime } from 'Utils/contact';

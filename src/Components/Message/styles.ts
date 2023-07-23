@@ -8,6 +8,7 @@ export const MessageBody = styled.div<{
   ${({ isFromUser }) => css`
     display: flex;
     flex-direction: row;
+    justify-content: ${isFromUser ? 'flex-start' : 'flex-end'};
     margin-bottom: ${spacing.small};
     padding-left: ${isFromUser ? 0 : spacing.small};
     padding-right: ${isFromUser ? spacing.small : 0};
@@ -25,6 +26,5 @@ export const MessageContent = styled.div<{
     color: ${colors.white};
     padding: ${spacing.small};
     text-align: ${isFromUser ? 'left' : 'right'};
-    width: 100%;
   `}
 `;
