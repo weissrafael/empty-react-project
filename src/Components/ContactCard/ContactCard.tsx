@@ -23,7 +23,6 @@ interface Props {
 }
 
 export default function ContactCard({ contact }: Props) {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
   const { id, name, lastSeenAt } = contact;
   const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
@@ -35,6 +34,7 @@ export default function ContactCard({ contact }: Props) {
     (state) => state
   );
   const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
+  const isSelected = selectedUsers.some((user) => user.id === id);
 
   function handleClick() {
     navigate('/chat/' + id);
@@ -48,10 +48,6 @@ export default function ContactCard({ contact }: Props) {
       addUser(contact);
     }
   }
-
-  useEffect(() => {
-    setIsSelected(selectedUsers.includes(contact));
-  }, [contact, isForSelection, selectedUsers]);
 
   return (
     <Card

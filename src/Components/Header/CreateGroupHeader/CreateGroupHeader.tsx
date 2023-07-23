@@ -20,7 +20,6 @@ function CreateGroupHeader() {
 
   function goToCreateGroupPage() {
     navigate('/create-group');
-    // setIsGroupMode(false);
   }
 
   function toggleGroupMode() {
@@ -28,10 +27,16 @@ function CreateGroupHeader() {
     setIsGroupMode(!isGroupMode);
   }
 
+  const handleGoBack = () => {
+    setTimeout(() => {
+      reset();
+    }, 500);
+  };
+
   return (
     <HeaderChatContainer>
       <ScreenLimiterContacts>
-        <TopLeftTabButton to="/inbox">
+        <TopLeftTabButton onClick={handleGoBack} to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
         <InfoContainer>

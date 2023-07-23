@@ -14,7 +14,10 @@ export interface ChatGroupResource {
 export const useGroupStore = create<ChatGroupResource>((set) => ({
   isGroupMode: false,
   selectedUsers: [],
-  reset: () => set(() => ({ selectedUsers: [] })),
+  reset: () =>
+    set(() => {
+      return { isGroupMode: false, selectedUsers: [] };
+    }),
   removeUser: (user: ContactResource) => {
     set((state) => ({
       selectedUsers: state.selectedUsers.filter((u) => u.id !== user.id),
