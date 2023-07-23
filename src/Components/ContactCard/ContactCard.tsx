@@ -29,7 +29,7 @@ export default function ContactCard({ contact }: Props) {
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-  const selectUser = useChatStore((state) => state.selectUser);
+  const { selectUser } = useChatStore((state) => state);
   const { isGroupMode, addUser, selectedUsers, removeUser } = useGroupStore(
     (state) => state
   );

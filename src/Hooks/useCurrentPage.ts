@@ -19,7 +19,9 @@ const useCurrentPage = () => {
     const path = location.pathname;
     console.log(path);
     setTimeout(() => {
-      if (path === '/inbox') {
+      if (path === '/') {
+        setActivePage(PagesEnum.login);
+      } else if (path === '/inbox') {
         setActivePage(PagesEnum.inbox);
       } else if (path === '/archived') {
         setActivePage(PagesEnum.archived);
@@ -27,10 +29,10 @@ const useCurrentPage = () => {
         setActivePage(PagesEnum.contacts);
       } else if (path === '/create-group') {
         setActivePage(PagesEnum.createGroup);
-      } else if (path === '/') {
-        setActivePage(PagesEnum.login);
       } else if (path.includes('/chat')) {
         setActivePage(PagesEnum.chat);
+      } else if (path.includes('/group')) {
+        setActivePage(PagesEnum.group);
       } else {
         setActivePage(PagesEnum.notFound);
       }

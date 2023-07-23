@@ -7,16 +7,20 @@ export interface ChatStoreResource {
   selectedUser: ContactResource;
   chatIsLoading: boolean;
   messages: MessageResource[];
+  members: ContactResource[];
   selectUser: (user: ContactResource) => void;
   addMessage: (message: MessageResource) => void;
   addMessages: (messages: MessageResource[]) => void;
   setChatIsLoading: (isLoading: boolean) => void;
+  setMembers: (members: ContactResource[]) => void;
 }
 
 export const useChatStore = create<ChatStoreResource>((set) => ({
   selectedUser: { id: 1, name: '', lastSeenAt: '' },
   chatIsLoading: false,
   messages: [],
+  members: [],
+  setMembers: (members: ContactResource[]) => set(() => ({ members })),
   setChatIsLoading: (isLoading: boolean) =>
     set(() => ({ chatIsLoading: isLoading })),
   addMessage: (message: MessageResource) =>

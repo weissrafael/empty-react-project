@@ -6,6 +6,7 @@ import { PagesEnum } from 'Models/UserInterfaceResources';
 import ChatHeader from './ChatHeader/ChatHeader';
 import CreateGroupHeader from './ContactsHeader/ContactsHeader';
 import ContactsHeader from './CreateGroupHeader/CreateGroupHeader';
+import GroupHeader from './GroupHeader/GroupHeader';
 import InboxHeader from './InboxHeader/InboxHeader';
 
 function Header() {
@@ -19,6 +20,7 @@ function Header() {
       {activePage === PagesEnum.contacts && <ContactsHeader />}
       {activePage === PagesEnum.chat && <ChatHeader />}
       {activePage === PagesEnum.createGroup && <CreateGroupHeader />}
+      {activePage === PagesEnum.group && <GroupHeader />}
     </header>
   );
 }
