@@ -50,9 +50,7 @@ export default function ContactCard({ contact }: Props) {
   }
 
   useEffect(() => {
-    if (isForSelection) {
-      setIsSelected(selectedUsers.includes(contact));
-    }
+    setIsSelected(selectedUsers.includes(contact));
   }, [contact, isForSelection, selectedUsers]);
 
   return (

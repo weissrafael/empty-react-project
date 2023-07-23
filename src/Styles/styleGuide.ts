@@ -81,7 +81,7 @@ export const shadows = {
 };
 
 export const borderRadius = {
-  card: '30px',
+  card: '40px',
   roundButton: '30px',
   fullCircle: '50%',
   modal: '8px',
