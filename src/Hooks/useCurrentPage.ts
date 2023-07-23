@@ -17,6 +17,7 @@ const useCurrentPage = () => {
 
   useEffect(() => {
     const path = location.pathname;
+    console.log(path);
     setTimeout(() => {
       if (path === '/inbox') {
         setActivePage(PagesEnum.inbox);
@@ -28,8 +29,10 @@ const useCurrentPage = () => {
         setActivePage(PagesEnum.createGroup);
       } else if (path === '/') {
         setActivePage(PagesEnum.login);
-      } else {
+      } else if (path.includes('/chat')) {
         setActivePage(PagesEnum.chat);
+      } else {
+        setActivePage(PagesEnum.notFound);
       }
     }, 500);
   }, [location]);

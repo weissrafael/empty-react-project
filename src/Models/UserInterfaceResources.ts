@@ -5,6 +5,7 @@ export enum PagesEnum {
   chat = 'chat',
   contacts = 'contacts',
   createGroup = 'create-group',
+  notFound = 'not-found',
 }
 
 export enum VariantEnum {

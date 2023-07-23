@@ -12,14 +12,14 @@ export const LoginContainer = styled.div`
   position: relative;
   top: -70px;
   width: 100%;
-  fieldset {
-    border-radius: 22px !important;
-  }
 `;
 
 export const LoginInput = styled(TextField)`
   margin-top: ${spacing.small} !important;
   width: 100%;
+  fieldset {
+    border-radius: 22px !important;
+  }
   & label.Mui-focused {
     color: ${colors.positive};
   }

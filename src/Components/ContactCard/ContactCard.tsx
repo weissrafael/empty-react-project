@@ -34,9 +34,11 @@ export default function ContactCard({ contact }: Props) {
     (state) => state
   );
   const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
-  const isSelected = selectedUsers.some((user) => user.id === id);
+  const isSelected =
+    isForSelection && selectedUsers.some((user) => user.id === id);
 
   function handleClick() {
+    if (activePage === PagesEnum.createGroup) return;
     navigate('/chat/' + id);
     selectUser(contact);
   }

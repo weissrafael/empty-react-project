@@ -58,6 +58,7 @@ function ChatFooter() {
             placeholder="Type a message..."
             multiline
             onKeyPress={handleKeyPress}
+            label="Message"
           />
           <ButtonContainer>
             <RoundButton

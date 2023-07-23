@@ -14,6 +14,7 @@ import useCurrentPage from './Hooks/useCurrentPage';
 import Chat from './Pages/Chat';
 import Contacts from './Pages/Contacts';
 import CreateGroup from './Pages/CreateGroup';
+import Group from './Pages/Group';
 import { PageBody } from './Styles/common.styles';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="inbox" element={<Inbox />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="create-group" element={<CreateGroup />} />
+          <Route path="group/:id" element={<Group />} />
           <Route path="chat/:id" element={<Chat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
