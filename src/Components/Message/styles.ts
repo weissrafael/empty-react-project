@@ -24,6 +24,7 @@ export const MessageContent = styled.div<{
     border-radius: ${borderRadius.message};
     box-shadow: ${shadows.messageShadow};
     color: ${colors.white};
+    max-width: 400px;
     padding: ${spacing.small};
     text-align: ${isFromUser ? 'left' : 'right'};
   `}
