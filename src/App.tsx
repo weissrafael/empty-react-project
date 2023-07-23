@@ -13,6 +13,7 @@ import Header from './Components/Header/Header';
 import useCurrentPage from './Hooks/useCurrentPage';
 import Chat from './Pages/Chat';
 import Contacts from './Pages/Contacts';
+import CreateGroup from './Pages/CreateGroup';
 import { PageBody } from './Styles/common.styles';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" index element={<Login />} />
           <Route path="inbox" element={<Inbox />} />
           <Route path="contacts" element={<Contacts />} />
+          <Route path="create-group" element={<CreateGroup />} />
           <Route path="chat/:id" element={<Chat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

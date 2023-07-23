@@ -24,6 +24,8 @@ const useCurrentPage = () => {
         setActivePage(PagesEnum.archived);
       } else if (path === '/contacts') {
         setActivePage(PagesEnum.contacts);
+      } else if (path === '/create-group') {
+        setActivePage(PagesEnum.createGroup);
       } else if (path === '/') {
         setActivePage(PagesEnum.login);
       } else {

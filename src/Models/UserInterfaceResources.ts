@@ -4,6 +4,7 @@ export enum PagesEnum {
   login = 'login',
   chat = 'chat',
   contacts = 'contacts',
+  createGroup = 'create-group',
 }
 
 export enum VariantEnum {

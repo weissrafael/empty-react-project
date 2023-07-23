@@ -12,7 +12,7 @@ import {
   TopLeftTabButton,
 } from '../styles';
 
-function ContactsHeader() {
+function CreateGroupHeader() {
   const navigate = useNavigate();
   const { isGroupMode, setIsGroupMode, reset, selectedUsers } = useGroupStore(
     (state) => state
@@ -20,6 +20,7 @@ function ContactsHeader() {
 
   function goToCreateGroupPage() {
     navigate('/create-group');
+    // setIsGroupMode(false);
   }
 
   function toggleGroupMode() {
@@ -30,7 +31,7 @@ function ContactsHeader() {
   return (
     <HeaderChatContainer>
       <ScreenLimiterContacts>
-        <TopLeftTabButton to="/contacts">
+        <TopLeftTabButton to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
         <InfoContainer>
@@ -56,4 +57,4 @@ function ContactsHeader() {
   );
 }
 
-export default React.memo(ContactsHeader);
+export default React.memo(CreateGroupHeader);
