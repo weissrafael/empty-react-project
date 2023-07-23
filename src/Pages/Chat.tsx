@@ -17,7 +17,7 @@ function Chat() {
   const { messages, addMessages } = useChatStore((state) => state);
 
   useEffect(() => {
-    if (dataFromApi) {
+    if (dataFromApi && messages.length === 0) {
       addMessages(dataFromApi);
     }
   }, [addMessages, dataFromApi]);

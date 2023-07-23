@@ -13,7 +13,7 @@ import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
 function ChatFooter() {
   const [text, setText] = useState('');
   const { activePage } = useCurrentPage.useCurrentPage();
-  const { addMessage } = useChatStore((state) => state);
+  const { addMessage, setChatIsLoading } = useChatStore((state) => state);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
@@ -26,12 +26,16 @@ function ChatFooter() {
   };
 
   const handleSend = () => {
-    addMessage({
-      id: randomId(),
-      userId: 999,
-      text: text,
-      sentAt: new Date().toString(),
-    });
+    setChatIsLoading(true);
+    setTimeout(() => {
+      setChatIsLoading(false);
+      addMessage({
+        id: randomId(),
+        userId: 999,
+        text: text,
+        sentAt: new Date().toString(),
+      });
+    }, 1000);
     setText('');
   };
 
