@@ -1,5 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
-import React from 'react';
+import React, { useState } from 'react';
 
 import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
@@ -9,7 +9,12 @@ import RoundButton from '../../RoundButton/RoundButton';
 import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
 
 function ChatFooter() {
+  const [text, setText] = useState('');
   const { activePage } = useCurrentPage.useCurrentPage();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  };
 
   if (activePage === PagesEnum.login) return null;
 
@@ -17,9 +22,16 @@ function ChatFooter() {
     <footer>
       <ChatFooterContainer>
         <ScreenLimiter>
-          <MessageInput placeholder="Type a message..." multiline />
+          <MessageInput
+            onChange={handleChange}
+            value={text}
+            placeholder="Type a message..."
+            multiline
+          />
           <ButtonContainer>
             <RoundButton
+              disabled={!text}
+              variant="primaryDark"
               style={{
                 height: 46,
                 width: 46,

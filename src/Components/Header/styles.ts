@@ -104,7 +104,7 @@ export const UserName = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -121,4 +121,7 @@ export const LastSeenAt = styled.div`
   right: 0;
   top: -4px;
   width: 100%;
+  @media (min-width: ${screens.medium}px) {
+    top: -11px;
+  }
 `;

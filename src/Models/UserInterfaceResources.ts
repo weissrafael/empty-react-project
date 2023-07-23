@@ -11,4 +11,4 @@ export enum VariantEnum {
   secondary = 'secondary',
 }
 
-export type Variant = 'primary' | 'secondary';
+export type Variant = 'primary' | 'secondary' | 'primaryDark' | 'secondaryDark';

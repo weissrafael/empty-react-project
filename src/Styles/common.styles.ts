@@ -14,7 +14,7 @@ export const PageBody = styled.main`
   padding: 60px ${spacing.small} 0 ${spacing.small};
   @media (min-width: ${screens.medium}px) {
     padding: 80px 0 0 0;
-    max-width: 700px;
+    max-width: 500px;
     margin: auto;
   }
 `;
@@ -41,7 +41,7 @@ export const ScreenLimiter = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  max-width: 700px;
+  max-width: 500px;
   width: 100%;
 `;
 

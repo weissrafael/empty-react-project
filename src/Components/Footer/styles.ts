@@ -13,10 +13,10 @@ import {
   shadows,
   spacing,
   text,
+  transitions,
 } from 'Styles/styleGuide';
 
-const { footerHeight, notificationBubbleSize, chatFooterHeight } =
-  componentSize;
+const { footerHeight, notificationBubbleSize } = componentSize;
 
 export const FooterContainer = styled.div`
   align-items: center;
@@ -42,21 +42,30 @@ export const ChatFooterContainer = styled(FooterContainer)`
 export const MessageInput = styled(TextField)`
   height: 100%;
   width: 100%;
+  textarea {
+    height: 100%;
+    max-height: 68px;
+    overflow-y: auto !important;
+    width: 100%;
+  }
   & label.Mui-focused {
-    color: ${colors.positive};
+    color: ${colors.positiveDark};
   }
   & .MuiInput-underline:after {
-    border-bottom-color: ${colors.positive};
+    border-bottom-color: ${colors.positiveDark};
   }
   & .MuiOutlinedInput-root {
     & fieldset {
-      border-color: ${colors.positive} !important;
+      border-color: ${colors.gray10} !important;
+      border-width: 2px;
+      transition: ${transitions.easeInOut2s};
     }
     &:hover fieldset {
-      border-color: ${colors.positive};
+      border-color: ${colors.gray8};
     }
     &.Mui-focused fieldset {
-      border-color: ${colors.positive};
+      border-color: ${colors.positiveDark} !important;
+      border-width: 2px;
     }
   }
 `;
