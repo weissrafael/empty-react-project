@@ -4,6 +4,7 @@ import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 
 import ChatHeader from './ChatHeader/ChatHeader';
+import ContactsHeader from './ContactsHeader/ContactsHeader';
 import InboxHeader from './InboxHeader/InboxHeader';
 
 function Header() {
@@ -13,9 +14,8 @@ function Header() {
 
   return (
     <header>
-      {(activePage === PagesEnum.inbox || PagesEnum.contacts) && (
-        <InboxHeader />
-      )}
+      {activePage === PagesEnum.inbox && <InboxHeader />}
+      {activePage === PagesEnum.contacts && <ContactsHeader />}
       {activePage === PagesEnum.chat && <ChatHeader />}
     </header>
   );

@@ -4,15 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { ContactResource } from 'Models/ContactResource';
 
 import { AWSUserAvatarUrl } from '../../Constants/AWS';
+import useCurrentPage from '../../Hooks/useCurrentPage';
+import { PagesEnum } from '../../Models/UserInterfaceResources';
 import { useChatStore } from '../../Stores/chat';
 import { formatTime } from '../../Utils/contact';
 
 import {
+  ActivityInfo,
   Card,
   ContactAvatar,
-  ActivityInfo,
-  UserName,
   LastSeenAt,
+  UserName,
 } from './styles';
 
 interface Props {
@@ -21,6 +23,7 @@ interface Props {
 
 export default function ContactCard({ contact }: Props) {
   const { id, name, lastSeenAt } = contact;
+  const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
@@ -37,7 +40,7 @@ export default function ContactCard({ contact }: Props) {
       <ContactAvatar src={avatarUrl} />
       <ActivityInfo>
         <UserName>{capitalName}</UserName>
-        <LastSeenAt>{date}</LastSeenAt>
+        {activePage === PagesEnum.inbox && <LastSeenAt>{date}</LastSeenAt>}
       </ActivityInfo>
     </Card>
   );

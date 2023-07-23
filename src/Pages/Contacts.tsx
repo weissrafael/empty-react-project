@@ -25,6 +25,7 @@ function Contacts() {
       {!isError && !isLoading && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>Contacts</h1>
+          <span>Click on a contact to start a conversation</span>
         </PageHeader>
       )}
       {isLoading && <SkeletonFeed />}

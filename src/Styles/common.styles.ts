@@ -22,11 +22,19 @@ export const PageBody = styled.main`
 export const PageHeader = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  margin-bottom: ${spacing.xxSmall};
-  padding-left: ${spacing.xxSmall};
+  margin-bottom: ${spacing.small};
   width: 100%;
+  h1 {
+    color: ${colors.gray10};
+    margin: ${spacing.small} auto 0 0;
+  }
+  span {
+    color: ${colors.gray9};
+    margin: ${spacing.xxSmall} auto 0 0;
+    padding-left: 2px};
+  }
 `;
 
 export const ErrorHeader = styled(PageHeader)`
@@ -46,7 +54,12 @@ export const ScreenLimiter = styled.div`
 `;
 
 export const ScreenLimiterChat = styled(ScreenLimiter)`
-  align-items: flex-end;
+  align-items: center;
+`;
+
+export const ScreenLimiterContacts = styled(ScreenLimiter)`
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const ErrorImage = styled.img`

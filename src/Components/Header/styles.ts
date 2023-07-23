@@ -44,7 +44,6 @@ export const HeaderChatContainer = styled(HeaderContainer)`
 
 export const SiteLogo = styled.svg`
   cursor: pointer;
-  margin-left: ${spacing.xxSmall};
   width: ${siteLogoWidthMobile}px;
   @media (min-width: ${screens.medium}px) {
     width: ${siteLogoWidthDesktop}px;
