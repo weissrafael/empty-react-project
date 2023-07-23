@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+import { ContactResource } from '../../Models/ContactResource';
 import { MessageResource } from '../../Models/MessageResource';
 import { useChatStore } from '../../Stores/chat';
 import Message from '../Message/Message';
@@ -9,10 +10,10 @@ import { ChatBody } from './styles';
 
 interface Props {
   messages?: MessageResource[];
-  userId?: string;
+  members?: ContactResource[];
 }
 
-export default function ChatWindow({ messages, userId }: Props) {
+export default function ChatWindow({ messages, members }: Props) {
   const bottomRef = useRef<any>(null);
   const chatIsLoading = useChatStore((state) => state.chatIsLoading);
 
@@ -23,7 +24,7 @@ export default function ChatWindow({ messages, userId }: Props) {
   return (
     <ChatBody>
       {messages?.map((message) => {
-        return <Message key={message.id} message={message} userId={userId} />;
+        return <Message key={message.id} members={members} message={message} />;
       })}
       {chatIsLoading && <MessageLoader />}
       <div ref={bottomRef} />

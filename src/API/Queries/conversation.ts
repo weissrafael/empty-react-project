@@ -1,7 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { QueryKeys } from 'API/QueryKeys';
-import { ConversationApiResource } from 'Models/ConversationResource';
+import {
+  ConversationApiResource,
+  SingleConversationApiResource,
+} from 'Models/ConversationResource';
 
 // import { axiosRequest } from 'API/axiosInstance';
 
@@ -53,10 +56,26 @@ const mockResponseList: ConversationApiResource[] = [
   },
 ];
 
-const mockResponseSingle: ConversationApiResource = {
+const mockResponseSingle: SingleConversationApiResource = {
   id: 9,
-  name: 'wessel',
-  last_seen_at: '2023-07-21T08:07:37.000000Z',
+  name: 'The Nerds',
+  members: [
+    {
+      id: 3,
+      name: 'bram',
+      last_seen_at: '2021-07-20T12:06:11.000000Z',
+    },
+    {
+      id: 2,
+      name: 'andre',
+      last_seen_at: '2021-06-27T22:06:11.000000Z',
+    },
+    {
+      id: 1,
+      name: 'ali',
+      last_seen_at: '2023-07-21T08:06:54.000000Z',
+    },
+  ],
 };
 
 export const useFetchConversations = () => {

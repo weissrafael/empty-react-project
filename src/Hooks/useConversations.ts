@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import { useFetchConversations } from 'API/Queries/conversation';
+import {
+  useFetchConversation,
+  useFetchConversations,
+} from 'API/Queries/conversation';
 
-import { formatConversations } from '../Mappers/ConversationMapper';
-import { ConversationResource } from '../Models/ConversationResource';
+import {
+  conversationApiToFrontResource,
+  formatConversations,
+  singleConversationApiToFrontResource,
+} from '../Mappers/ConversationMapper';
+import {
+  ConversationResource,
+  SingleConversationResource,
+} from '../Models/ConversationResource';
 
 const useGetConversations = () => {
   const { data, isLoading, isError } = useFetchConversations();
@@ -33,4 +43,23 @@ const useGetConversations = () => {
   };
 };
 
-export default { useGetConversations };
+const useGetSingleConversation = (id: string) => {
+  const { data, isLoading, isError } = useFetchConversation(id);
+
+  const [formattedData, setFormattedData] =
+    useState<SingleConversationResource>({} as SingleConversationResource);
+
+  useEffect(() => {
+    if (data) {
+      setFormattedData(singleConversationApiToFrontResource(data));
+    }
+  }, [data]);
+
+  return {
+    isLoading,
+    isError,
+    data: formattedData,
+  };
+};
+
+export default { useGetConversations, useGetSingleConversation };

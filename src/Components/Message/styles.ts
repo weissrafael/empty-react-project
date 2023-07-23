@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { borderRadius, colors, shadows, spacing } from 'Styles/styleGuide';
 
 export const MessageBody = styled.div<{
-  isFromUser: boolean;
+  isFromUser?: boolean;
 }>`
   ${({ isFromUser }) => css`
     display: flex;
@@ -17,7 +17,7 @@ export const MessageBody = styled.div<{
 `;
 
 export const MessageContent = styled.div<{
-  isFromUser: boolean;
+  isFromUser?: boolean;
 }>`
   ${({ isFromUser }) => css`
     align-items: center;

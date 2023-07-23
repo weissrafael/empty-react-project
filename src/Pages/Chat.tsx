@@ -2,17 +2,16 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ChatWindow from '../Components/ChatWindow/ChatWindow';
+import useConversations from '../Hooks/useConversations';
 import useMessages from '../Hooks/useMessages';
 import { useChatStore } from '../Stores/chat';
 
 function Chat() {
   const { id } = useParams();
-  const {
-    isLoading,
-    isError,
-    data: dataFromApi,
-    isFetching,
-  } = useMessages.useGetMessage(id || '');
+  const { data: dataFromApi } = useMessages.useGetMessage(id || '');
+  const { data: conversationData } = useConversations.useGetSingleConversation(
+    id || ''
+  );
 
   const { messages, addMessages } = useChatStore((state) => state);
 
@@ -22,7 +21,7 @@ function Chat() {
     }
   }, [addMessages, dataFromApi]);
 
-  return <ChatWindow userId={id} messages={messages} />;
+  return <ChatWindow members={conversationData?.members} messages={messages} />;
 }
 
 export default React.memo(Chat);
