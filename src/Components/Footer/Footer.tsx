@@ -15,7 +15,6 @@ function Footer() {
     <footer>
       {activePage === PagesEnum.inbox && <InboxFooter />}
       {activePage === PagesEnum.chat && <ChatFooter />}
-      {activePage === PagesEnum.group && <ChatFooter />}
     </footer>
   );
 }

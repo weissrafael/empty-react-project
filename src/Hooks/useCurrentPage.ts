@@ -31,8 +31,6 @@ const useCurrentPage = () => {
         setActivePage(PagesEnum.createGroup);
       } else if (path.includes('/chat')) {
         setActivePage(PagesEnum.chat);
-      } else if (path.includes('/group')) {
-        setActivePage(PagesEnum.group);
       } else {
         setActivePage(PagesEnum.notFound);
       }
