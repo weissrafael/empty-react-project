@@ -79,7 +79,7 @@ const mockResponse: MessageApiResource[] = [
   {
     id: 25,
     user_id: 3,
-    text: 'Im doing great!',
+    text: 'Im doing great! lets see how a big phrase will look like, sorry to say random words but I really need to see how it looks like',
     sent_at: '2023-07-21T08:11:51.000000Z',
   },
 ];

@@ -55,3 +55,8 @@ export const MemberName = styled.div`
 `;
 
 export const MessageText = styled.div``;
+
+export const ChatAvatar = styled.img`
+  margin-right: ${spacing.xsSmall};
+  max-width: 40px;
+`;

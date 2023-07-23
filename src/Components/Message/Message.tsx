@@ -6,6 +6,7 @@ import { MessageResource } from '../../Models/MessageResource';
 import { ContactAvatar } from '../ContactCard/styles';
 
 import {
+  ChatAvatar,
   InfoContainer,
   MemberName,
   MessageBody,
@@ -31,7 +32,7 @@ export default function Message({ message, members }: Props) {
     return (
       <MessageBody isFromUser={isFromUser}>
         <MessageContent isGroup={isGroup} isFromUser={isFromUser}>
-          <ContactAvatar src={avatarUrl} />
+          <ChatAvatar src={avatarUrl} />
           <InfoContainer>
             <MemberName>{capitalName}</MemberName>
             <MessageText>{message?.text}</MessageText>
