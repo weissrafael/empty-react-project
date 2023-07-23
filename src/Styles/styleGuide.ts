@@ -85,7 +85,7 @@ export const borderRadius = {
   roundButton: '30px',
   fullCircle: '50%',
   modal: '8px',
-  message: '20px',
+  message: '60px',
 };
 
 export const transitions = {
