@@ -17,23 +17,27 @@ import {
 const { callTimeHeight, cardHeight, groupedCallBubbleSize, archiveButtonSize } =
   componentSize;
 
-export const Card = styled.div`
-  align-items: center;
-  background-color: ${colors.white};
-  border-radius: ${borderRadius.card};
-  box-shadow: ${shadows.shadowCenter8};
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  height: ${cardHeight}px;
-  margin-bottom: ${spacing.small};
-  padding: ${spacing.xSmall};
-  position: relative;
-  transition: ${transitions.easeInOut3s};
-  width: 100%;
-  &:hover {
-    transform: scale(${scaleFactor.item});
-  }
+export const Card = styled.div<{
+  isSelected: boolean;
+}>`
+  ${({ isSelected }) => css`
+    align-items: center;
+    background-color: ${isSelected ? colors.positiveDark : colors.white};
+    border-radius: ${borderRadius.card};
+    box-shadow: ${shadows.shadowCenter8};
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    height: ${cardHeight}px;
+    margin-bottom: ${spacing.small};
+    padding: ${spacing.xSmall};
+    position: relative;
+    transition: ${transitions.easeInOut3s};
+    width: 100%;
+    &:hover {
+      transform: scale(${scaleFactor.item});
+    }
+  `}
 `;
 
 export const ActivityInfo = styled.div`
@@ -46,12 +50,16 @@ export const ContactAvatar = styled.img`
   max-width: 60px;
 `;
 
-export const UserName = styled.div`
-  align-items: center;
-  color: ${colors.gray10};
-  display: flex;
-  font-size: ${text.h2};
-  margin-bottom: ${spacing.xSmall};
+export const UserName = styled.div<{
+  isSelected: boolean;
+}>`
+  ${({ isSelected }) => css`
+    align-items: center;
+    color: ${isSelected ? colors.white : colors.gray10};
+    display: flex;
+    font-size: ${text.h2};
+    margin-bottom: ${spacing.xSmall};
+  `}
 `;
 
 export const VisibleContent = styled.div`

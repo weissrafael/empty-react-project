@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ContactResource } from 'Models/ContactResource';
@@ -7,6 +7,7 @@ import { AWSUserAvatarUrl } from '../../Constants/AWS';
 import useCurrentPage from '../../Hooks/useCurrentPage';
 import { PagesEnum } from '../../Models/UserInterfaceResources';
 import { useChatStore } from '../../Stores/chat';
+import { useGroupStore } from '../../Stores/group';
 import { formatTime } from '../../Utils/contact';
 
 import {
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export default function ContactCard({ contact }: Props) {
+  const [isSelected, setIsSelected] = useState<boolean>(false);
   const { id, name, lastSeenAt } = contact;
   const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
@@ -29,17 +31,34 @@ export default function ContactCard({ contact }: Props) {
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
   const selectUser = useChatStore((state) => state.selectUser);
+  const { isGroupMode, addUser, selectedUsers } = useGroupStore(
+    (state) => state
+  );
+  const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
 
   function handleClick() {
     navigate('/chat/' + id);
     selectUser(contact);
   }
 
+  function handleSelectionClick() {
+    addUser(contact);
+  }
+
+  useEffect(() => {
+    if (isForSelection) {
+      setIsSelected(selectedUsers.includes(contact));
+    }
+  }, [contact, isForSelection, selectedUsers]);
+
   return (
-    <Card onClick={handleClick}>
+    <Card
+      isSelected={isSelected}
+      onClick={isForSelection ? handleSelectionClick : handleClick}
+    >
       <ContactAvatar src={avatarUrl} />
       <ActivityInfo>
-        <UserName>{capitalName}</UserName>
+        <UserName isSelected={isSelected}>{capitalName}</UserName>
         {activePage === PagesEnum.inbox && <LastSeenAt>{date}</LastSeenAt>}
       </ActivityInfo>
     </Card>
