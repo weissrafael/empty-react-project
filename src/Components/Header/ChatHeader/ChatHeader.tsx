@@ -29,7 +29,7 @@ function ChatHeader() {
       <ScreenLimiterChat>
         <UserName>{capitalName}</UserName>
         <LastSeenAt>{date}</LastSeenAt>
-        <TopLeftTabButton $active={activePage === PagesEnum.inbox} to="/inbox">
+        <TopLeftTabButton to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
         <InfoContainer>

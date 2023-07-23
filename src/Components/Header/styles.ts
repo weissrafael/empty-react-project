@@ -82,6 +82,7 @@ export const TopLeftTabButton = styled(TopRightTabButton)`
   padding: 0;
   width: auto !important;
   svg {
+    color: ${colors.gray10};
     font-size: 2.8rem;
   }
 `;

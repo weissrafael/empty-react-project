@@ -56,12 +56,12 @@ export const MessageInput = styled(TextField)`
   }
   & .MuiOutlinedInput-root {
     & fieldset {
-      border-color: ${colors.gray10} !important;
+      border-color: ${colors.gray9} !important;
       border-width: 2px;
       transition: ${transitions.easeInOut2s};
     }
     &:hover fieldset {
-      border-color: ${colors.gray8};
+      border-color: ${colors.gray10};
     }
     &.Mui-focused fieldset {
       border-color: ${colors.positiveDark} !important;
