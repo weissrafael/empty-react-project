@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ChatWindow from '../Components/ChatWindow/ChatWindow';
 import useMessages from '../Hooks/useMessages';
+import { useChatStore } from '../Stores/chat';
 
 function Chat() {
   const { id } = useParams();
@@ -13,7 +14,15 @@ function Chat() {
     isFetching,
   } = useMessages.useGetMessage(id || '');
 
-  return <ChatWindow userId={id} messages={dataFromApi} />;
+  const { messages, addMessages } = useChatStore((state) => state);
+
+  useEffect(() => {
+    if (dataFromApi) {
+      addMessages(dataFromApi);
+    }
+  }, [addMessages, dataFromApi]);
+
+  return <ChatWindow userId={id} messages={messages} />;
 }
 
 export default React.memo(Chat);

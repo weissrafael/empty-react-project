@@ -14,7 +14,6 @@ export default function ChatWindow({ messages, userId }: Props) {
   const bottomRef = useRef<any>(null);
 
   useEffect(() => {
-    // 👇️ scroll to bottom every time messages change
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
