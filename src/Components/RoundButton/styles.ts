@@ -21,6 +21,9 @@ function getVariantStyles(variant?: Variant) {
         &:hover {
           background-color: ${colors.positiveDark};
         }
+        &:disabled {
+          background-color: ${colors.gray6};
+        }
       `;
     case 'primaryDark':
       return css`
@@ -34,7 +37,7 @@ function getVariantStyles(variant?: Variant) {
       `;
     case 'secondary':
       return css`
-        background-color: ${colors.gray6};
+        background-color: ${colors.gray9};
         &:hover {
           background-color: ${colors.gray7};
         }

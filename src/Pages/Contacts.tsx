@@ -9,6 +9,7 @@ import { PageHeader } from 'Styles/common.styles';
 import { useGroupStore } from '../Stores/group';
 
 function Contacts() {
+  const { isGroupMode, selectedUsers } = useGroupStore((state) => state);
   const {
     isLoading,
     isError,
@@ -18,8 +19,16 @@ function Contacts() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const selectedUsersLength = selectedUsers.length;
 
-  const { isGroupMode } = useGroupStore((state) => state);
+  const subtitle =
+    selectedUsersLength > 0
+      ? `You have selected ${selectedUsersLength} contact${
+          selectedUsersLength > 1 ? 's' : ''
+        }`
+      : isGroupMode
+      ? 'Select the contacts you want for the new group'
+      : 'Click on a contact to start a conversation';
 
   return (
     <>
@@ -27,11 +36,7 @@ function Contacts() {
       {!isError && !isLoading && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>{isGroupMode ? 'New Group' : 'Contacts'}</h1>
-          <span>
-            {isGroupMode
-              ? 'Select the contacts you want for the new group'
-              : 'Click on a contact to start a conversation'}
-          </span>
+          <span>{subtitle}</span>
         </PageHeader>
       )}
       {isLoading && <SkeletonFeed />}
