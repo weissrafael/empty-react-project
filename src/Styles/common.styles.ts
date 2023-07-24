@@ -1,9 +1,7 @@
-import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { colors, componentSize, screens, spacing } from './styleGuide';
-const { loaderSize, modalLoaderSize } = componentSize;
+import { colors, screens, spacing } from './styleGuide';
 
 export const PageBody = styled.main`
   align-items: center;
@@ -112,21 +110,6 @@ export const TabButton = styled(Link)<TabButtonProps>`
       font-size: 2rem;
     }
   }
-`;
-
-export const StyledCircularProgress = styled(CircularProgress)`
-  color: ${colors.positive} !important;
-  height: ${loaderSize}px !important;
-  margin-left: auto;
-  margin-right: ${spacing.xSmall};
-  width: ${loaderSize}px !important;
-`;
-
-export const StyledCircularProgressModal = styled(CircularProgress)`
-  color: ${colors.positive} !important;
-  height: ${modalLoaderSize}px !important;
-  margin-right: ${spacing.xSmall};
-  width: ${modalLoaderSize}px !important;
 `;
 
 export const CardList = styled.div`

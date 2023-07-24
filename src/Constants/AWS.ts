@@ -1,5 +1,3 @@
-export const AWSBaseUrl =
-  'https://aircall-weissrafael.s3.us-west-1.amazonaws.com/';
 export const AWSUserAvatarUrl =
   'https://aircall-weissrafael.s3.us-west-1.amazonaws.com/usersAvatar/';
 export const AWSIllustrationsUrl =

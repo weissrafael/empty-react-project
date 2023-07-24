@@ -59,8 +59,6 @@ export const NavigationTabs = styled.div`
   width: 100%;
 `;
 
-export const NavigationChat = styled.div``;
-
 export const TopRightTabButton = styled(TabButton)`
   ${({ $active }) => css`
     align-items: center;
@@ -118,6 +116,7 @@ export const InfoContainer = styled.div`
   justify-content: flex-end;
   width: 100%;
 `;
+
 export const LastSeenAt = styled.div`
   align-items: flex-end;
   color: ${colors.gray9};

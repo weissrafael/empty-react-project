@@ -11,7 +11,6 @@ import { PagesEnum } from '../../Models/UserInterfaceResources';
 import { useChatStore } from '../../Stores/chat';
 import { useGroupStore } from '../../Stores/group';
 import { useLoggedUser } from '../../Stores/loggedUser';
-import FullScreenLoader from '../FullscreenLoader/FullScreenLoader';
 
 import { ActivityInfo, Card, ContactAvatar, UserName } from './styles';
 

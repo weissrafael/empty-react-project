@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { SiteLogo } from '../Components/Header/styles';
+import { SiteLogo } from 'Components/Header/styles';
+
 import RoundButton from '../Components/RoundButton/RoundButton';
-import { useChatStore } from '../Stores/chat';
 import { useLoggedUser } from '../Stores/loggedUser';
 import { LoginContainer, LoginInput, Space } from '../Styles/login.styles';
 import { spacing } from '../Styles/styleGuide';
@@ -16,7 +16,7 @@ function Login() {
   const navigate = useNavigate();
   const { setLoggedUser } = useLoggedUser((state) => state);
 
-  const validateEmail = (email: string) => {
+  const validateEmail = () => {
     if (username === '') {
       setUsernameError('Username cannot be empty');
     } else if (!/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)) {
@@ -26,7 +26,7 @@ function Login() {
     }
   };
 
-  const validatePassword = (password: string) => {
+  const validatePassword = () => {
     if (password === '') {
       setPasswordError('Password cannot be empty');
     } else if (password.length < 8) {
@@ -37,8 +37,8 @@ function Login() {
   };
 
   const handleLogin = () => {
-    validateEmail(username);
-    validatePassword(password);
+    validateEmail();
+    validatePassword();
     if (!usernameError && !passwordError) {
       let id = 7;
       if (username.charAt(0) >= '0' && username.charAt(0) <= '9') {
@@ -102,7 +102,7 @@ function Login() {
         helperText={usernameError}
         error={!!usernameError}
         onKeyPress={handleKeyPress}
-        onBlur={() => validateEmail(username)}
+        onBlur={validateEmail}
       />
       <LoginInput
         type="password"
@@ -112,7 +112,7 @@ function Login() {
         helperText={passwordError}
         error={!!passwordError}
         onKeyPress={handleKeyPress}
-        onBlur={() => validatePassword(password)}
+        onBlur={validatePassword}
       />
       <Space />
       <Space />

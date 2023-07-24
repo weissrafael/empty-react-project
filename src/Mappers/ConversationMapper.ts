@@ -4,7 +4,7 @@ import {
 } from 'Models/ConversationResource';
 
 import { formatContact } from './ContactMapper';
-import { formatMessages, messageApiToFrontResource } from './MessageMapper';
+import { messageApiToFrontResource } from './MessageMapper';
 
 export function formatConversations(
   conversations: ConversationApiResource[]

@@ -1,6 +1,6 @@
 import SendIcon from '@mui/icons-material/Send';
 import { useMutation } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { ScreenLimiter } from 'Styles/common.styles';
 

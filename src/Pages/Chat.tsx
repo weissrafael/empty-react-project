@@ -8,7 +8,6 @@ import FullScreenLoader from '../Components/FullscreenLoader/FullScreenLoader';
 import useConversations from '../Hooks/useConversations';
 import useMessages from '../Hooks/useMessages';
 import { useChatStore } from '../Stores/chat';
-import { StateContainer } from '../Styles/common.styles';
 
 function Chat() {
   const { id } = useParams();

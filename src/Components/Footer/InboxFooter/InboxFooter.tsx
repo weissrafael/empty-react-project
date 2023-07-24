@@ -1,4 +1,3 @@
-import ContactsIcon from '@mui/icons-material/Contacts';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Person2Icon from '@mui/icons-material/Person2';
