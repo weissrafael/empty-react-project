@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 import { ScreenLimiter } from 'Styles/common.styles';
 
-import { createConversation } from '../../../API/Mutations/contact';
 import { createMessage } from '../../../API/Mutations/message';
 import { useChatStore } from '../../../Stores/chat';
 import RoundButton from '../../RoundButton/RoundButton';

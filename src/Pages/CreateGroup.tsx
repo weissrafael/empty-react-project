@@ -1,6 +1,8 @@
+import { useMutation } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { createConversation } from '../API/Mutations/conversation';
 import ContactCard from '../Components/ContactCard/ContactCard';
 import RoundButton from '../Components/RoundButton/RoundButton';
 import { useGroupStore } from '../Stores/group';
@@ -9,11 +11,25 @@ import { LoginInput, Space } from '../Styles/login.styles';
 
 export default function CreateGroup() {
   const { selectedUsers } = useGroupStore((state) => state);
+  const usersIds = selectedUsers.map((item) => item.id);
   const [text, setText] = useState<string>('');
   const navigate = useNavigate();
 
+  const mutateCreateConversation = useMutation(
+    async () => {
+      return await createConversation(usersIds, text);
+    },
+    {
+      onSuccess: (data) => {
+        const { id } = data.data;
+        navigate(`/chat/${id}`);
+        setText('');
+      },
+    }
+  );
+
   function handleCreateGroup() {
-    navigate('/group/1');
+    mutateCreateConversation.mutate();
   }
 
   return (

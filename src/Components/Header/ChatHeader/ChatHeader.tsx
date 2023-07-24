@@ -1,8 +1,6 @@
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import React from 'react';
 
-import useCurrentPage from 'Hooks/useCurrentPage';
-import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiterChat } from 'Styles/common.styles';
 import { formatTime } from 'Utils/contact';
 
@@ -18,7 +16,9 @@ import {
 } from '../styles';
 
 function ChatHeader() {
-  const { id, name, lastSeenAt } = useChatStore((state) => state.selectedUser);
+  const { name, members } = useChatStore((state) => state.selectedConversation);
+  const { lastSeenAt, id } = members[1];
+  const isGroup = members && members?.length > 2;
   const date = formatTime(lastSeenAt);
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
@@ -26,13 +26,13 @@ function ChatHeader() {
   return (
     <HeaderChatContainer>
       <ScreenLimiterChat>
-        <UserName>{capitalName}</UserName>
-        <LastSeenAt>{date}</LastSeenAt>
+        <UserName isGroup={isGroup}>{capitalName}</UserName>
+        {!isGroup && <LastSeenAt>{date}</LastSeenAt>}
         <TopLeftTabButton to="/inbox">
           <ArrowCircleLeftIcon />
         </TopLeftTabButton>
         <InfoContainer>
-          <ChatContactAvatar src={avatarUrl} />
+          {!isGroup && <ChatContactAvatar src={avatarUrl} />}
         </InfoContainer>
       </ScreenLimiterChat>
     </HeaderChatContainer>

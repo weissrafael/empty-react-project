@@ -90,17 +90,19 @@ export const ChatContactAvatar = styled.img`
   max-width: 42px;
 `;
 
-export const UserName = styled.div`
-  align-items: center;
-  color: ${colors.gray10};
-  display: flex;
-  font-size: ${text.h1};
-  height: 100%;
-  justify-content: center;
-  position: absolute;
-  right: 0;
-  top: -6px;
-  width: 100%;
+export const UserName = styled.div<{ isGroup: boolean }>`
+  ${({ isGroup }) => css`
+    align-items: center;
+    color: ${colors.gray10};
+    display: flex;
+    font-size: ${text.h1};
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: ${isGroup ? -2 : -6}px;
+    width: 100%;
+  `}
 `;
 
 export const InfoContainer = styled.div`

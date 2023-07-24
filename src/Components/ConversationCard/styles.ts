@@ -50,6 +50,19 @@ export const ContactAvatar = styled.img`
   max-width: 60px;
 `;
 
+export const GroupAvatar = styled.div`
+  align-items: center;
+  background-color: ${colors.gray10};
+  border-radius: ${borderRadius.fullCircle};
+  color: ${colors.white};
+  display: flex;
+  font-size: 2rem;
+  height: 60px;
+  justify-content: center;
+  margin-right: ${spacing.xsSmall};
+  width: 60px;
+`;
+
 export const UserName = styled.div<{
   isSelected?: boolean;
 }>`

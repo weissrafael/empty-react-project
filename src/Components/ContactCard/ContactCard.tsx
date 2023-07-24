@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ContactResource } from 'Models/ContactResource';
 
-import { createConversation } from '../../API/Mutations/contact';
+import { createConversation } from '../../API/Mutations/conversation';
 import { AWSUserAvatarUrl } from '../../Constants/AWS';
 import useCurrentPage from '../../Hooks/useCurrentPage';
 import { PagesEnum } from '../../Models/UserInterfaceResources';

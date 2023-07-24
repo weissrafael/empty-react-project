@@ -15,6 +15,7 @@ import {
   ActivityInfo,
   Card,
   ContactAvatar,
+  GroupAvatar,
   LastSeenAt,
   UserName,
 } from './styles';
@@ -24,8 +25,9 @@ interface Props {
 }
 
 export default function ConversationCard({ conversation }: Props) {
-  const contact = conversation.members[1];
-  const { id, name } = conversation;
+  const { id, name, members } = conversation;
+  const contact = members[1];
+  const isGroup = members && members?.length > 2;
   const { lastSeenAt } = contact;
   const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
@@ -44,7 +46,11 @@ export default function ConversationCard({ conversation }: Props) {
 
   return (
     <Card onClick={handleClick}>
-      <ContactAvatar src={avatarUrl} />
+      {isGroup ? (
+        <GroupAvatar>{capitalName ? capitalName.charAt(0) : 'U'}</GroupAvatar>
+      ) : (
+        <ContactAvatar src={avatarUrl} />
+      )}
       <ActivityInfo>
         <UserName>{capitalName ? capitalName : 'Unknown'}</UserName>
         {activePage === PagesEnum.inbox && <LastSeenAt>{date}</LastSeenAt>}
