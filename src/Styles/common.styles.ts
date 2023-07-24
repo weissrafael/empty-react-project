@@ -9,7 +9,6 @@ export const PageBody = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
   padding: 60px ${spacing.small} 0 ${spacing.small};
   @media (min-width: ${screens.medium}px) {

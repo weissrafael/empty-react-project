@@ -6,31 +6,28 @@ import {
 } from 'API/Queries/conversation';
 
 import {
+  conversationApiToFrontResource,
   formatConversations,
-  singleConversationApiToFrontResource,
 } from '../Mappers/ConversationMapper';
-import {
-  ConversationsResource,
-  SingleConversationResource,
-} from '../Models/ConversationsResource';
+import { ConversationResource } from '../Models/ConversationResource';
 
 const useGetConversations = () => {
   const { data, isLoading, isError } = useFetchConversations();
 
-  const [formattedData, setFormattedData] = useState<ConversationsResource[]>(
+  const [formattedData, setFormattedData] = useState<ConversationResource[]>(
     []
   );
 
-  function compareDates(a: ConversationsResource, b: ConversationsResource) {
-    const dateA = new Date(a.lastSeenAt);
-    const dateB = new Date(b.lastSeenAt);
-    return dateB.getTime() - dateA.getTime();
-  }
+  // function compareDates(a: ConversationResource, b: ConversationResource) {
+  //   const dateA = new Date(a.lastSeenAt);
+  //   const dateB = new Date(b.lastSeenAt);
+  //   return dateB.getTime() - dateA.getTime();
+  // }
 
   useEffect(() => {
     if (data) {
       const newData = formatConversations(data.data);
-      newData.sort(compareDates);
+      // newData.sort(compareDates);
       setFormattedData(newData);
     }
   }, [data]);
@@ -45,12 +42,13 @@ const useGetConversations = () => {
 const useGetSingleConversation = (id: string) => {
   const { data, isLoading, isError } = useFetchConversation(id);
 
-  const [formattedData, setFormattedData] =
-    useState<SingleConversationResource>({} as SingleConversationResource);
+  const [formattedData, setFormattedData] = useState<ConversationResource>(
+    {} as ConversationResource
+  );
 
   useEffect(() => {
     if (data) {
-      setFormattedData(singleConversationApiToFrontResource(data));
+      setFormattedData(conversationApiToFrontResource(data));
     }
   }, [data]);
 

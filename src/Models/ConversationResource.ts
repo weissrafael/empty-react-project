@@ -1,32 +1,20 @@
 import { LinksResource, MetaResource } from './ApiResource';
 import { ContactApiResource, ContactResource } from './ContactResource';
 
-export interface ConversationsApiResource {
-  id: number;
-  name: string;
-  last_seen_at: string;
-}
-
-export interface ConversationsResource {
-  id: number;
-  name: string;
-  lastSeenAt: string;
-}
-
-export interface SingleConversationApiResource {
+export interface ConversationApiResource {
   id: number;
   name: string;
   members: ContactApiResource[];
 }
 
-export interface SingleConversationResource {
+export interface ConversationResource {
   id: number;
   name: string;
   members: ContactResource[];
 }
 
 export interface ConversationsResponseResource {
-  data: ConversationsApiResource[];
+  data: ConversationApiResource[];
   links: LinksResource;
   meta: MetaResource;
 }

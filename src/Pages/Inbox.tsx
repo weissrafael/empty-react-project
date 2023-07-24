@@ -18,6 +18,8 @@ function Inbox() {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log('dataFromApi', dataFromApi);
+
   return (
     <>
       {!isError && !isLoading && dataFromApi.length > 0 && (
@@ -31,7 +33,7 @@ function Inbox() {
       {!isError && !isLoading && (
         <CardList>
           {dataFromApi.map((item) => (
-            <ConversationCard key={item.id} contact={item} />
+            <ConversationCard key={item.id} conversation={item} />
           ))}
         </CardList>
       )}

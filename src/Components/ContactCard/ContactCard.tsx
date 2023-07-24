@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ContactResource } from 'Models/ContactResource';
@@ -10,17 +10,9 @@ import useCurrentPage from '../../Hooks/useCurrentPage';
 import { PagesEnum } from '../../Models/UserInterfaceResources';
 import { useChatStore } from '../../Stores/chat';
 import { useGroupStore } from '../../Stores/group';
-import { StyledCircularProgress } from '../../Styles/common.styles';
-import { formatTime } from '../../Utils/contact';
 import FullScreenLoader from '../FullscreenLoader/FullScreenLoader';
 
-import {
-  ActivityInfo,
-  Card,
-  ContactAvatar,
-  LastSeenAt,
-  UserName,
-} from './styles';
+import { ActivityInfo, Card, ContactAvatar, UserName } from './styles';
 
 interface Props {
   contact: ContactResource;
@@ -42,7 +34,7 @@ export default function ContactCard({ contact }: Props) {
 
   const mutateCreateConversation = useMutation(
     async () => {
-      await createConversation([id]);
+      await createConversation([id], name);
     },
     {
       onSuccess: () => {

@@ -4,8 +4,8 @@ import { axiosRequest } from 'API/axiosInstance';
 import { QueryKeys } from 'API/QueryKeys';
 import {
   ConversationsResponseResource,
-  SingleConversationApiResource,
-} from 'Models/ConversationsResource';
+  ConversationApiResource,
+} from 'Models/ConversationResource';
 
 import { mockedLoggedUser } from '../mockedLoggedUser';
 
@@ -22,7 +22,7 @@ export const useFetchConversations = () => {
 
 export const useFetchConversation = (id: string) => {
   return useQuery([QueryKeys.conversation + id], async () => {
-    const response = await axiosRequest.get<SingleConversationApiResource>(
+    const response = await axiosRequest.get<ConversationApiResource>(
       `/user/${id}`
     );
     return response.data;
