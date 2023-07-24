@@ -6,6 +6,7 @@ import useConversations from 'Hooks/useConversations';
 import { CardList, PageHeader } from 'Styles/common.styles';
 
 import ConversationCard from '../Components/ConversationCard/ConversationCard';
+import ErrorState from '../Components/ErrorState/ErrorState';
 
 function Inbox() {
   const {
@@ -21,13 +22,13 @@ function Inbox() {
 
   return (
     <>
-      {!isError && !isLoading && !isFetching && dataFromApi.length > 0 && (
+      {!isError && (
         <PageHeader>
           <h1>Inbox</h1>
         </PageHeader>
       )}
       {(isLoading || isFetching) && <SkeletonFeed />}
-      {/*{isError && !isLoading && <ErrorState />}*/}
+      {isError && !isLoading && <ErrorState />}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
       {!isError && !isLoading && (
         <CardList>

@@ -33,7 +33,7 @@ function Contacts() {
 
   return (
     <>
-      {!isError && !isLoading && dataFromApi.length > 0 && (
+      {!isError && (
         <PageHeader>
           <h1>{isGroupMode ? 'New Group' : 'Contacts'}</h1>
           <span>{subtitle}</span>
