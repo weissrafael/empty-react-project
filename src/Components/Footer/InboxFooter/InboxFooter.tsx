@@ -1,5 +1,6 @@
 import ContactsIcon from '@mui/icons-material/Contacts';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Person2Icon from '@mui/icons-material/Person2';
 import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
@@ -39,10 +40,10 @@ function InboxFooter() {
           <NewChatButton />
           <RightActions>
             <TabRightButton to="/inbox">
-              <ContactsIcon />
-            </TabRightButton>
-            <TabRightButton to="/inbox">
               <SettingsIcon />
+            </TabRightButton>
+            <TabRightButton to="/">
+              <MeetingRoomIcon />
             </TabRightButton>
           </RightActions>
         </ScreenLimiter>
