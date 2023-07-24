@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 
+import { mockedLoggedUser } from 'API/mockedLoggedUser';
+import ContactCard from 'Components/ContactCard/ContactCard';
 import EmptyState from 'Components/EmptyState/EmptyState';
+import ErrorState from 'Components/ErrorState/ErrorState';
 import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useContacts from 'Hooks/useContacts';
+import { useGroupStore } from 'Stores/group';
 import { CardList, PageHeader } from 'Styles/common.styles';
-
-import { mockedLoggedUser } from '../API/mockedLoggedUser';
-import ContactCard from '../Components/ContactCard/ContactCard';
-import { useGroupStore } from '../Stores/group';
 
 function Contacts() {
   const { isGroupMode, selectedUsers } = useGroupStore((state) => state);
@@ -40,7 +40,7 @@ function Contacts() {
         </PageHeader>
       )}
       {isLoading && <SkeletonFeed />}
-      {/*{isError && !isLoading && <ErrorState />}*/}
+      {isError && !isLoading && <ErrorState />}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
       {!isError && !isLoading && (
         <CardList>

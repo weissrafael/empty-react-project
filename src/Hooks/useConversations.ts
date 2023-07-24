@@ -12,7 +12,7 @@ import {
 import { ConversationResource } from '../Models/ConversationResource';
 
 const useGetConversations = () => {
-  const { data, isLoading, isError } = useFetchConversations();
+  const { data, isLoading, isError, isFetching } = useFetchConversations();
 
   const [formattedData, setFormattedData] = useState<ConversationResource[]>(
     []
@@ -35,6 +35,7 @@ const useGetConversations = () => {
   return {
     isLoading,
     isError,
+    isFetching,
     data: formattedData,
   };
 };

@@ -12,6 +12,7 @@ function Inbox() {
     isLoading,
     isError,
     data: dataFromApi,
+    isFetching,
   } = useConversations.useGetConversations();
 
   useEffect(() => {
@@ -20,12 +21,12 @@ function Inbox() {
 
   return (
     <>
-      {!isError && !isLoading && dataFromApi.length > 0 && (
+      {!isError && !isLoading && !isFetching && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>Inbox</h1>
         </PageHeader>
       )}
-      {isLoading && <SkeletonFeed />}
+      {(isLoading || isFetching) && <SkeletonFeed />}
       {/*{isError && !isLoading && <ErrorState />}*/}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
       {!isError && !isLoading && (
