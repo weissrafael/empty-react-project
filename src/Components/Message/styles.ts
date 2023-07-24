@@ -27,7 +27,7 @@ export const MessageContent = styled.div<{
   isGroup?: boolean;
 }>`
   ${({ isFromOtherUser, isGroup }) => css`
-    align-items: center;
+    align-items: flex-start;
     background-color: ${isFromOtherUser ? colors.gray10 : colors.positiveDark};
     border-radius: ${borderRadius.message};
     box-shadow: ${shadows.messageShadow};
@@ -36,7 +36,8 @@ export const MessageContent = styled.div<{
     flex-direction: row;
     max-width: 400px;
     min-height: 52px;
-    text-align: ${isFromOtherUser ? 'left' : 'right'};
+    text-align: left;
+    word-break: break-word;
     ${isGroup && isFromOtherUser
       ? `padding: ${spacing.xSmall} ${spacing.medium} ${spacing.xSmall} ${spacing.xSmall};`
       : `padding: ${spacing.small};`}

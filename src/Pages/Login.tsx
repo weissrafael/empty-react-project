@@ -120,7 +120,9 @@ function Login() {
         onClick={handleLogin}
         variant="primary"
         size="big"
-        disabled={!!usernameError || !!passwordError || !username || !password}
+        disabled={
+          !!usernameError || !!passwordError || !username || password.length < 8
+        }
       >
         Login
       </RoundButton>

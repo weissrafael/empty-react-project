@@ -64,6 +64,7 @@ function ChatFooter() {
             multiline
             onKeyPress={handleKeyPress}
             label="Message"
+            inputProps={{ maxLength: 500 }}
           />
           <ButtonContainer>
             <RoundButton
