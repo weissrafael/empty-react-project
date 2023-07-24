@@ -10,6 +10,7 @@ import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter, TabButton } from 'Styles/common.styles';
 
+import { useLoggedUser } from '../../../Stores/loggedUser';
 import {
   FooterContainer,
   LeftActions,
@@ -18,10 +19,14 @@ import {
   TabRightButton,
 } from '../styles';
 
+const mockNumberOfCalls = 7;
+
 function InboxFooter() {
   const { activePage } = useCurrentPage.useCurrentPage();
-  const mockNumberOfCalls = 7;
-
+  const { setLoggedUser } = useLoggedUser((state) => state);
+  const handleLogout = () => {
+    setLoggedUser({ id: 0, name: '', lastSeenAt: '' });
+  };
   if (activePage === PagesEnum.login) return null;
 
   return (
@@ -42,7 +47,7 @@ function InboxFooter() {
             <TabRightButton to="/inbox">
               <SettingsIcon />
             </TabRightButton>
-            <TabRightButton to="/">
+            <TabRightButton onClick={handleLogout} to="/">
               <MeetingRoomIcon />
             </TabRightButton>
           </RightActions>

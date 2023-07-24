@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import 'Styles/globals.css';
 import 'Assets/Fonts/Dosis-Regular.ttf';
@@ -16,12 +16,23 @@ import Chat from './Pages/Chat';
 import Contacts from './Pages/Contacts';
 import CreateGroup from './Pages/CreateGroup';
 import { useChatStore } from './Stores/chat';
+import { useLoggedUser } from './Stores/loggedUser';
 import { PageBody } from './Styles/common.styles';
 
 function App() {
   const { onAnimationEnd, displayLocation, transitionStage } =
     useCurrentPage.useCurrentPage();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const { screenIsLoading } = useChatStore((state) => state);
+  const { loggedUser } = useLoggedUser((state) => state);
+
+  useEffect(() => {
+    if (loggedUser.id === 0 && location.pathname !== '/') {
+      navigate('/');
+    }
+  }, [location.pathname, loggedUser, navigate]);
 
   return (
     <span className={`${transitionStage}`} onAnimationEnd={onAnimationEnd}>
