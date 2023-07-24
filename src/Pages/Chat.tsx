@@ -19,9 +19,8 @@ function Chat() {
   } = useMessages.useGetMessage(id || '');
   const { data, isLoading, isError } =
     useConversations.useGetSingleConversation(id || '');
-  const { setChatIsLoading, setSelectedConversation } = useChatStore(
-    (state) => state
-  );
+  const { setChatIsLoading, setSelectedConversation, chatIsLoading } =
+    useChatStore((state) => state);
 
   useEffect(() => {
     setChatIsLoading(false);
@@ -33,7 +32,7 @@ function Chat() {
 
   if (isError || messageError) return <ErrorState />;
   else if (messageLoading || isLoading) return <FullScreenLoader isLoading />;
-  else if (messageData.length === 0)
+  else if (messageData.length === 0 && !chatIsLoading)
     return (
       <EmptyState
         title="No messages here!"
