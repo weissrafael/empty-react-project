@@ -48,7 +48,7 @@ const useGetSingleConversation = (id: string) => {
 
   useEffect(() => {
     if (data) {
-      setFormattedData(conversationApiToFrontResource(data));
+      setFormattedData(conversationApiToFrontResource(data.data));
     }
   }, [data]);
 

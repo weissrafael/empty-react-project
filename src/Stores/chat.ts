@@ -20,7 +20,11 @@ export interface ChatStoreResource {
 
 export const useChatStore = create<ChatStoreResource>((set) => ({
   selectedUser: { id: 1, name: '', lastSeenAt: '' },
-  selectedConversation: { id: 1, name: '', members: [] },
+  selectedConversation: {
+    id: 1,
+    name: '',
+    members: [{ id: 1, name: '', lastSeenAt: '' }],
+  },
   setSelectedConversation: (conversation: ConversationResource) =>
     set(() => ({ selectedConversation: conversation })),
   chatIsLoading: false,
