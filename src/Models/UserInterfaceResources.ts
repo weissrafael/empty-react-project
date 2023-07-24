@@ -14,3 +14,5 @@ export enum VariantEnum {
 }
 
 export type Variant = 'primary' | 'secondary' | 'primaryDark' | 'secondaryDark';
+
+export type Size = 'small' | 'medium' | 'big';

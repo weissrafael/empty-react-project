@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { Variant } from 'Models/UserInterfaceResources';
+import { Size, Variant } from 'Models/UserInterfaceResources';
 
 import { StyledButton } from './styles';
 
@@ -9,6 +9,7 @@ interface Props {
   children: ReactNode;
   style?: any;
   variant?: Variant;
+  size?: Size;
   disabled?: boolean;
 }
 
@@ -17,6 +18,7 @@ export default function RoundButton({
   children,
   style,
   disabled,
+  size = 'small',
   variant = 'primary',
 }: Props) {
   return (
@@ -25,6 +27,7 @@ export default function RoundButton({
       variant={variant}
       style={style}
       onClick={onClick}
+      size={size}
     >
       {children}
     </StyledButton>

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Variant } from 'Models/UserInterfaceResources';
+import { Size, Variant } from 'Models/UserInterfaceResources';
 import {
   borderRadius,
   colors,
@@ -11,6 +11,7 @@ import {
 
 interface Props {
   variant?: Variant;
+  size?: Size;
 }
 
 function getVariantStyles(variant?: Variant) {
@@ -52,8 +53,26 @@ function getVariantStyles(variant?: Variant) {
   }
 }
 
+function getSizeStyles(size?: Size) {
+  switch (size) {
+    case 'big':
+      return css`
+        font-size: 1rem;
+        height: 3rem;
+      `;
+    case 'medium':
+      return css`
+        height: 2.5rem;
+      `;
+    case 'small':
+      return css`
+        height: auto;
+      `;
+  }
+}
+
 export const StyledButton = styled.button<Props>`
-  ${({ variant }) => css`
+  ${({ variant, size }) => css`
     align-items: center;
     border: none;
     border-radius: ${borderRadius.roundButton};
@@ -66,5 +85,6 @@ export const StyledButton = styled.button<Props>`
     padding: ${spacing.xSmall} ${spacing.small};
     transition: ${transitions.easeInOut2s};
     ${getVariantStyles(variant)}
+    ${getSizeStyles(size)}
   `}
 `;

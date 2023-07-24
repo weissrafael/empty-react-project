@@ -7,10 +7,8 @@ export const LoginContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 70vh;
   justify-content: center;
-  position: relative;
-  top: -70px;
   width: 100%;
 `;
 
