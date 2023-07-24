@@ -16,8 +16,8 @@ const EllipsisLoader: React.FC = () => {
 
 export default function MessageLoader() {
   return (
-    <MessageBody isFromUser={false}>
-      <MessageContent isFromUser={false}>
+    <MessageBody isFromOtherUser={false}>
+      <MessageContent isFromOtherUser={false}>
         <EllipsisLoader />
       </MessageContent>
     </MessageBody>

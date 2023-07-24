@@ -9,26 +9,26 @@ import {
 } from 'Styles/styleGuide';
 
 export const MessageBody = styled.div<{
-  isFromUser?: boolean;
+  isFromOtherUser?: boolean;
 }>`
-  ${({ isFromUser }) => css`
+  ${({ isFromOtherUser }) => css`
     display: flex;
     flex-direction: row;
-    justify-content: ${isFromUser ? 'flex-start' : 'flex-end'};
+    justify-content: ${isFromOtherUser ? 'flex-start' : 'flex-end'};
     margin-bottom: ${spacing.small};
-    padding-left: ${isFromUser ? 0 : spacing.small};
-    padding-right: ${isFromUser ? spacing.small : 0};
+    padding-left: ${isFromOtherUser ? 0 : spacing.small};
+    padding-right: ${isFromOtherUser ? spacing.small : 0};
     width: 100%;
   `}
 `;
 
 export const MessageContent = styled.div<{
-  isFromUser?: boolean;
+  isFromOtherUser?: boolean;
   isGroup?: boolean;
 }>`
-  ${({ isFromUser, isGroup }) => css`
+  ${({ isFromOtherUser, isGroup }) => css`
     align-items: center;
-    background-color: ${isFromUser ? colors.gray10 : colors.positiveDark};
+    background-color: ${isFromOtherUser ? colors.gray10 : colors.positiveDark};
     border-radius: ${borderRadius.message};
     box-shadow: ${shadows.messageShadow};
     color: ${colors.white};
@@ -36,8 +36,8 @@ export const MessageContent = styled.div<{
     flex-direction: row;
     max-width: 400px;
     min-height: 52px;
-    text-align: ${isFromUser ? 'left' : 'right'};
-    ${isGroup && isFromUser
+    text-align: ${isFromOtherUser ? 'left' : 'right'};
+    ${isGroup && isFromOtherUser
       ? `padding: ${spacing.xSmall} ${spacing.medium} ${spacing.xSmall} ${spacing.xSmall};`
       : `padding: ${spacing.small};`}
   `}

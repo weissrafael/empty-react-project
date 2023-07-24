@@ -22,17 +22,17 @@ interface Props {
 
 export default function Message({ message, members }: Props) {
   const membersIds = members?.map((member) => member.id);
-  const isFromUser = message?.userId !== mockedLoggedUser.id;
+  const isFromOtherUser = message?.userId !== mockedLoggedUser.id;
   const isGroup = membersIds?.length && membersIds?.length > 2;
   const messageOwner = members?.find((member) => member.id === message?.userId);
   const capitalName = messageOwner
     ? messageOwner.name.charAt(0).toUpperCase() + messageOwner.name.slice(1)
     : '';
   const avatarUrl = AWSUserAvatarUrl + 'user' + messageOwner?.id + '.png';
-  if (isGroup && isFromUser) {
+  if (isGroup && isFromOtherUser) {
     return (
-      <MessageBody isFromUser={isFromUser}>
-        <MessageContent isGroup={isGroup} isFromUser={isFromUser}>
+      <MessageBody isFromOtherUser={isFromOtherUser}>
+        <MessageContent isGroup={isGroup} isFromOtherUser={isFromOtherUser}>
           <ChatAvatar src={avatarUrl} />
           <InfoContainer>
             <MemberName>{capitalName}</MemberName>
@@ -43,8 +43,10 @@ export default function Message({ message, members }: Props) {
     );
   }
   return (
-    <MessageBody isFromUser={isFromUser}>
-      <MessageContent isFromUser={isFromUser}>{message?.text}</MessageContent>
+    <MessageBody isFromOtherUser={isFromOtherUser}>
+      <MessageContent isFromOtherUser={isFromOtherUser}>
+        {message?.text}
+      </MessageContent>
     </MessageBody>
   );
 }
