@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { SiteLogo } from '../Components/Header/styles';
@@ -7,11 +7,45 @@ import { LoginContainer, LoginInput, Space } from '../Styles/login.styles';
 import { spacing } from '../Styles/styleGuide';
 
 function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate('/inbox');
+  const validateEmail = (email: string) => {
+    if (username === '') {
+      setUsernameError('Username cannot be empty');
+    } else if (!/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)) {
+      setUsernameError('Please enter a valid email address');
+    } else {
+      setUsernameError('');
+    }
   };
+
+  const validatePassword = (password: string) => {
+    if (password === '') {
+      setPasswordError('Password cannot be empty');
+    } else if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const handleLogin = () => {
+    validateEmail(username);
+    validatePassword(password);
+    if (!usernameError && !passwordError) {
+      navigate('/inbox');
+    }
+  };
+
+  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  }
 
   return (
     <LoginContainer>
@@ -54,17 +88,23 @@ function Login() {
       </SiteLogo>
       <Space />
       <LoginInput
-        id="outlined-basic"
-        label="Login"
-        color="success"
-        variant="outlined"
+        label="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        helperText={usernameError}
+        error={!!usernameError}
+        onKeyPress={handleKeyPress}
+        onBlur={() => validateEmail(username)}
       />
       <LoginInput
-        id="outlined-basic"
-        label="Password"
-        variant="outlined"
-        className="login-input"
         type="password"
+        label="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        helperText={passwordError}
+        error={!!passwordError}
+        onKeyPress={handleKeyPress}
+        onBlur={() => validatePassword(password)}
       />
       <Space />
       <Space />
@@ -73,6 +113,7 @@ function Login() {
         onClick={handleLogin}
         variant="primary"
         size="big"
+        disabled={!!usernameError || !!passwordError || !username || !password}
       >
         Login
       </RoundButton>

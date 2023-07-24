@@ -7,7 +7,7 @@ import { StyledButton } from './styles';
 interface Props {
   onClick: () => void;
   children: ReactNode;
-  style?: any;
+  style?: React.CSSProperties;
   variant?: Variant;
   size?: Size;
   disabled?: boolean;

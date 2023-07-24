@@ -15,19 +15,17 @@ export const LoginContainer = styled.div`
 export const LoginInput = styled(TextField)`
   margin-top: ${spacing.small} !important;
   width: 100%;
+  label {
+    color: ${colors.gray9} !important;
+  }
   fieldset {
     border-radius: 22px !important;
   }
-  & label.Mui-focused {
-    color: ${colors.positive};
-  }
+
   & .MuiInput-underline:after {
     border-bottom-color: ${colors.positive};
   }
   & .MuiOutlinedInput-root {
-    & fieldset {
-      border-color: ${colors.positive} !important;
-    }
     &:hover fieldset {
       border-color: ${colors.positive};
     }
