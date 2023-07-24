@@ -1,15 +1,15 @@
 import { LinksResource, MetaResource } from './ApiResource';
 
 export interface MessageApiResource {
-  id: number;
-  user_id: number;
+  id: number | string;
+  user_id: number | string;
   text: string;
   sent_at: string;
 }
 
 export interface MessageResource {
-  id: number;
-  userId: number;
+  id: number | string;
+  userId: number | string;
   text: string;
   sentAt: string;
 }

@@ -43,6 +43,8 @@ export const Card = styled.div<{
 export const ActivityInfo = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  padding-right: ${spacing.medium};
 `;
 
 export const ContactAvatar = styled.img`
@@ -124,8 +126,13 @@ export const ContactInfo = styled.div`
 
 export const LastSeenAt = styled.div`
   color: ${colors.gray9};
+  flex-wrap: wrap;
   font-size: ${text.paragraph};
+  overflow: hidden;
   padding-bottom: ${spacing.xxSmall};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 `;
 
 export const CallTime = styled.div`

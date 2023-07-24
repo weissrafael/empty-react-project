@@ -19,8 +19,8 @@ const useGetConversations = () => {
   );
 
   // function compareDates(a: ConversationResource, b: ConversationResource) {
-  //   const dateA = new Date(a.lastSeenAt);
-  //   const dateB = new Date(b.lastSeenAt);
+  //   const dateA = new Date(a.lastMessage?.sentAt ?? 0);
+  //   const dateB = new Date(b.lastMessage?.sentAt ?? 0);
   //   return dateB.getTime() - dateA.getTime();
   // }
 

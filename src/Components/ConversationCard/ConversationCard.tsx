@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ContactResource } from 'Models/ContactResource';
-
-import { AWSUserAvatarUrl } from '../../Constants/AWS';
-import useCurrentPage from '../../Hooks/useCurrentPage';
-import { ConversationResource } from '../../Models/ConversationResource';
-import { PagesEnum } from '../../Models/UserInterfaceResources';
-import { useChatStore } from '../../Stores/chat';
-import { useGroupStore } from '../../Stores/group';
-import { formatTime } from '../../Utils/contact';
+import { AWSUserAvatarUrl } from 'Constants/AWS';
+import { ConversationResource } from 'Models/ConversationResource';
+import { useChatStore } from 'Stores/chat';
+import { formatTime } from 'Utils/contact';
 
 import {
   ActivityInfo,
@@ -25,13 +20,12 @@ interface Props {
 }
 
 export default function ConversationCard({ conversation }: Props) {
-  const { id, name, members } = conversation;
+  const { id, name, members, lastMessage } = conversation;
+  const { text, sentAt } = lastMessage;
   const contact = members[1];
   const isGroup = members && members?.length > 2;
-  const { lastSeenAt } = contact;
-  const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
-  const date = formatTime(lastSeenAt);
+  const date = formatTime(sentAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + contact.id + '.png';
   const capitalName = name?.charAt(0).toUpperCase() + name?.slice(1);
   const { setSelectedConversation } = useChatStore((state) => state);
@@ -50,7 +44,7 @@ export default function ConversationCard({ conversation }: Props) {
       )}
       <ActivityInfo>
         <UserName>{capitalName ? capitalName : 'Unknown'}</UserName>
-        {activePage === PagesEnum.inbox && <LastSeenAt>{date}</LastSeenAt>}
+        <LastSeenAt>{text ? text : 'new chat'}</LastSeenAt>
       </ActivityInfo>
     </Card>
   );

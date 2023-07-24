@@ -8,7 +8,7 @@ export function formatMessages(
   });
 }
 
-const messageApiToFrontResource = (
+export const messageApiToFrontResource = (
   message: MessageApiResource
 ): MessageResource => {
   const { id, user_id, sent_at, text } = message;
