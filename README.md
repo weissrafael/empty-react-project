@@ -10,6 +10,12 @@ Then you will need to install the dependencies by running the following command 
 ## Login
 
 type any email that starts with an integer from 1 to 9, that will be your user id! example: 3jake@bunq.com
+
+1 - ali
+2 - andre
+3 - bram
+4 - 
+
 ### `yarn install`
 
 ## Available Scripts

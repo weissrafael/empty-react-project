@@ -33,7 +33,7 @@ function InboxFooter() {
       <FooterContainer>
         <ScreenLimiter>
           <LeftActions>
-            <TabButton to="/" $active={true}>
+            <TabButton>
               <LocalPhoneIcon />
               <NotificationBubble>{mockNumberOfCalls}</NotificationBubble>
             </TabButton>
