@@ -2,14 +2,14 @@ import { useMutation } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { createConversation } from '../API/Mutations/conversation';
-import ContactCard from '../Components/ContactCard/ContactCard';
-import RoundButton from '../Components/RoundButton/RoundButton';
-import { useChatStore } from '../Stores/chat';
-import { useGroupStore } from '../Stores/group';
-import { useLoggedUser } from '../Stores/loggedUser';
-import { CardList } from '../Styles/common.styles';
-import { LoginInput, Space } from '../Styles/login.styles';
+import { createConversation } from 'API/Mutations/conversation';
+import ContactCard from 'Components/ContactCard/ContactCard';
+import RoundButton from 'Components/RoundButton/RoundButton';
+import { useChatStore } from 'Stores/chat';
+import { useGroupStore } from 'Stores/group';
+import { useLoggedUser } from 'Stores/loggedUser';
+import { CardList } from 'Styles/common.styles';
+import { LoginInput, Space } from 'Styles/login.styles';
 
 export default function CreateGroup() {
   const { selectedUsers, reset } = useGroupStore((state) => state);

@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { SiteLogo } from 'Components/Header/styles';
-
-import RoundButton from '../Components/RoundButton/RoundButton';
-import { useLoggedUser } from '../Stores/loggedUser';
-import { LoginContainer, LoginInput, Space } from '../Styles/login.styles';
-import { spacing } from '../Styles/styleGuide';
+import RoundButton from 'Components/RoundButton/RoundButton';
+import { useLoggedUser } from 'Stores/loggedUser';
+import { LoginContainer, LoginInput, Space } from 'Styles/login.styles';
+import { spacing } from 'Styles/styleGuide';
 
 function Login() {
   const [username, setUsername] = useState('');

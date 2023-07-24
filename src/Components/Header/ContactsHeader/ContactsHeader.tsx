@@ -2,10 +2,10 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import RoundButton from 'Components/RoundButton/RoundButton';
 import { useGroupStore } from 'Stores/group';
 import { ScreenLimiterContacts } from 'Styles/common.styles';
 
-import RoundButton from '../../RoundButton/RoundButton';
 import {
   HeaderChatContainer,
   InfoContainer,

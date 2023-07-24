@@ -1,6 +1,5 @@
 import { axiosRequest } from 'API/axiosInstance';
-
-import { SingleMessageResponseResource } from '../../Models/MessageResource';
+import { SingleMessageResponseResource } from 'Models/MessageResource';
 
 export const createMessage = async (
   conversationId: number,

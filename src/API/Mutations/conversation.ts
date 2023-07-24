@@ -1,6 +1,5 @@
 import { axiosRequest } from 'API/axiosInstance';
-
-import { ConversationResponseResource } from '../../Models/ConversationResource';
+import { ConversationResponseResource } from 'Models/ConversationResource';
 
 export const createConversation = async (
   userIds: number[],

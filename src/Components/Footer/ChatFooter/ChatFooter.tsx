@@ -2,13 +2,13 @@ import SendIcon from '@mui/icons-material/Send';
 import { useMutation } from '@tanstack/react-query';
 import React, { useState } from 'react';
 
+import { createMessage } from 'API/Mutations/message';
+import RoundButton from 'Components/RoundButton/RoundButton';
+import useMessages from 'Hooks/useMessages';
+import { useChatStore } from 'Stores/chat';
+import { useLoggedUser } from 'Stores/loggedUser';
 import { ScreenLimiter } from 'Styles/common.styles';
 
-import { createMessage } from '../../../API/Mutations/message';
-import useMessages from '../../../Hooks/useMessages';
-import { useChatStore } from '../../../Stores/chat';
-import { useLoggedUser } from '../../../Stores/loggedUser';
-import RoundButton from '../../RoundButton/RoundButton';
 import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
 
 function ChatFooter() {

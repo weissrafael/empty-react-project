@@ -2,15 +2,14 @@ import { useMutation } from '@tanstack/react-query';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { createConversation } from 'API/Mutations/conversation';
+import { AWSUserAvatarUrl } from 'Constants/AWS';
+import useCurrentPage from 'Hooks/useCurrentPage';
 import { ContactResource } from 'Models/ContactResource';
-
-import { createConversation } from '../../API/Mutations/conversation';
-import { AWSUserAvatarUrl } from '../../Constants/AWS';
-import useCurrentPage from '../../Hooks/useCurrentPage';
-import { PagesEnum } from '../../Models/UserInterfaceResources';
-import { useChatStore } from '../../Stores/chat';
-import { useGroupStore } from '../../Stores/group';
-import { useLoggedUser } from '../../Stores/loggedUser';
+import { PagesEnum } from 'Models/UserInterfaceResources';
+import { useChatStore } from 'Stores/chat';
+import { useGroupStore } from 'Stores/group';
+import { useLoggedUser } from 'Stores/loggedUser';
 
 import { ActivityInfo, Card, ContactAvatar, UserName } from './styles';
 
@@ -72,7 +71,7 @@ export default function ContactCard({ contact }: Props) {
       isSelected={isSelected}
       onClick={isForSelection ? handleSelectionClick : handleClick}
     >
-      <ContactAvatar src={avatarUrl} />
+      <ContactAvatar height="60" width="60" loading="lazy" src={avatarUrl} />
       <ActivityInfo>
         <UserName isSelected={isSelected}>{capitalName}</UserName>
       </ActivityInfo>

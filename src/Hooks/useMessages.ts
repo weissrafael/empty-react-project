@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { useFetchMessage } from '../API/Queries/message';
-import { formatMessages } from '../Mappers/MessageMapper';
-import { MessageResource } from '../Models/MessageResource';
+import { useFetchMessage } from 'API/Queries/message';
+import { formatMessages } from 'Mappers/MessageMapper';
+import { MessageResource } from 'Models/MessageResource';
 
 const useGetMessage = (id: number | string) => {
   const { data, isLoading, isError, refetch, isFetching } = useFetchMessage(id);

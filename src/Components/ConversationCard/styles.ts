@@ -5,7 +5,6 @@ import {
   colors,
   componentSize,
   scaleFactor,
-  screens,
   shadows,
   spacing,
   text,

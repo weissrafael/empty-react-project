@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { AWSUserAvatarUrl } from '../../Constants/AWS';
-import { ContactResource } from '../../Models/ContactResource';
-import { MessageResource } from '../../Models/MessageResource';
-import { useLoggedUser } from '../../Stores/loggedUser';
+import { AWSUserAvatarUrl } from 'Constants/AWS';
+import { ContactResource } from 'Models/ContactResource';
+import { MessageResource } from 'Models/MessageResource';
+import { useLoggedUser } from 'Stores/loggedUser';
 
 import {
   ChatAvatar,

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import useCurrentPage from '../../Hooks/useCurrentPage';
-import { PagesEnum } from '../../Models/UserInterfaceResources';
+import useCurrentPage from 'Hooks/useCurrentPage';
+import { PagesEnum } from 'Models/UserInterfaceResources';
 
 import ChatFooter from './ChatFooter/ChatFooter';
 import InboxFooter from './InboxFooter/InboxFooter';

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import { useFetchContacts } from 'API/Queries/contact';
-
-import { formatContacts } from '../Mappers/ContactMapper';
-import { ContactResource } from '../Models/ContactResource';
+import { formatContacts } from 'Mappers/ContactMapper';
+import { ContactResource } from 'Models/ContactResource';
 
 const useGetContacts = () => {
   const { data, isLoading, isError } = useFetchContacts();

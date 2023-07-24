@@ -4,12 +4,11 @@ import {
   useFetchConversation,
   useFetchConversations,
 } from 'API/Queries/conversation';
-
 import {
   conversationApiToFrontResource,
   formatConversations,
-} from '../Mappers/ConversationMapper';
-import { ConversationResource } from '../Models/ConversationResource';
+} from 'Mappers/ConversationMapper';
+import { ConversationResource } from 'Models/ConversationResource';
 
 const useGetConversations = () => {
   const { data, isLoading, isError, isFetching } = useFetchConversations();

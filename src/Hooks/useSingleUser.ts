@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import { useFetchContact } from 'API/Queries/contact';
-
-import { formatContact } from '../Mappers/ContactMapper';
-import { ContactResource } from '../Models/ContactResource';
+import { formatContact } from 'Mappers/ContactMapper';
+import { ContactResource } from 'Models/ContactResource';
 
 const useGetSingleUser = (id: string) => {
   const { data, isLoading, isError } = useFetchContact(id);

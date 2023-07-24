@@ -27,16 +27,18 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## App Features
+- [x] enter a username + password to login (type an email that starts with an integer from 1 to 9)
+- [x] 
+- [x] 
 - [x] The App is full responsive and works on mobile, tablet and desktop
 - [x] Custom Hooks for improved architecture
-- [x] Mobile first oriented
-- [x] Improved user experience with nice transitions
+- [x] Improved user experience with smooth transitions
 - [x] All animations made with CSS (no libraries)
 - [x] Error handling with Error Boundary
 - [x] Error page, 404 page, empty list page
-- [x] All images stored on AWS with american CDN
+- [x] All images stored on AWS
 - [x] CSS Styleguide with BEM methodology and no magic numbers
-- [x] Rich ESLint configuration, import statements and CSS is in alphabetical order
+- [x] Rich ESLint configuration, import statements and CSS are both in alphabetical order
 
 ## Libraries used
 

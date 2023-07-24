@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { PagesEnum } from '../Models/UserInterfaceResources';
+import { PagesEnum } from 'Models/UserInterfaceResources';
 
 const useCurrentPage = () => {
   const location = useLocation();

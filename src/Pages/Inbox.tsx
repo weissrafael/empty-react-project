@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 
+import ConversationCard from 'Components/ConversationCard/ConversationCard';
 import EmptyState from 'Components/EmptyState/EmptyState';
+import ErrorState from 'Components/ErrorState/ErrorState';
 import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useConversations from 'Hooks/useConversations';
 import { CardList, PageHeader } from 'Styles/common.styles';
-
-import ConversationCard from '../Components/ConversationCard/ConversationCard';
-import ErrorState from '../Components/ErrorState/ErrorState';
 
 function Inbox() {
   const {
@@ -21,7 +20,7 @@ function Inbox() {
 
   if (isError) return <ErrorState />;
   else if (isLoading) return <SkeletonFeed />;
-  else if (dataFromApi.length === 0)
+  else if (!dataFromApi.length)
     return (
       <EmptyState
         title="No conversations yet!"

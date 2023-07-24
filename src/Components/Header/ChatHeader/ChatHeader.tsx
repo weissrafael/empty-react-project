@@ -1,11 +1,11 @@
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import React from 'react';
 
+import { AWSUserAvatarUrl } from 'Constants/AWS';
+import { useChatStore } from 'Stores/chat';
 import { ScreenLimiterChat } from 'Styles/common.styles';
 import { formatTime } from 'Utils/contact';
 
-import { AWSUserAvatarUrl } from '../../../Constants/AWS';
-import { useChatStore } from '../../../Stores/chat';
 import {
   HeaderChatContainer,
   InfoContainer,

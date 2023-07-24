@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-import { ContactResource } from '../Models/ContactResource';
+import { ContactResource } from 'Models/ContactResource';
 
 export interface LoggedUserResource {
   loggedUser: ContactResource;

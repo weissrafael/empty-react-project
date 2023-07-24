@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ChatWindow from '../Components/ChatWindow/ChatWindow';
-import EmptyState from '../Components/EmptyState/EmptyState';
-import ErrorState from '../Components/ErrorState/ErrorState';
-import FullScreenLoader from '../Components/FullscreenLoader/FullScreenLoader';
-import useConversations from '../Hooks/useConversations';
-import useMessages from '../Hooks/useMessages';
-import { useChatStore } from '../Stores/chat';
+import ChatWindow from 'Components/ChatWindow/ChatWindow';
+import EmptyState from 'Components/EmptyState/EmptyState';
+import ErrorState from 'Components/ErrorState/ErrorState';
+import FullScreenLoader from 'Components/FullscreenLoader/FullScreenLoader';
+import useConversations from 'Hooks/useConversations';
+import useMessages from 'Hooks/useMessages';
+import { useChatStore } from 'Stores/chat';
 
 function Chat() {
   const { id } = useParams();

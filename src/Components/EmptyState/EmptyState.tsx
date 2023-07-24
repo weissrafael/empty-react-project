@@ -15,7 +15,11 @@ export default function EmptyState({ title, subtitle }: Props) {
         {title}
         <span>{subtitle}</span>
       </ErrorHeader>
-      <ErrorImage src={AWSIllustrationsUrl + IllustrationNames.archiveEmpty} />
+      <ErrorImage
+        width="288"
+        height="300"
+        src={AWSIllustrationsUrl + IllustrationNames.archiveEmpty}
+      />
     </StateContainer>
   );
 }

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { ConversationResource } from '../Models/ConversationResource';
+import { ConversationResource } from 'Models/ConversationResource';
 
 export interface ChatStoreResource {
   selectedConversation: ConversationResource;

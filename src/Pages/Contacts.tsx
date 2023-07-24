@@ -6,9 +6,8 @@ import ErrorState from 'Components/ErrorState/ErrorState';
 import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useContacts from 'Hooks/useContacts';
 import { useGroupStore } from 'Stores/group';
+import { useLoggedUser } from 'Stores/loggedUser';
 import { CardList, PageHeader } from 'Styles/common.styles';
-
-import { useLoggedUser } from '../Stores/loggedUser';
 
 function Contacts() {
   const { isGroupMode, selectedUsers, setUsersAvailable } = useGroupStore(

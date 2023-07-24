@@ -7,9 +7,9 @@ import React from 'react';
 import NewChatButton from 'Components/NewChatButton/NewChatButton';
 import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
+import { useLoggedUser } from 'Stores/loggedUser';
 import { ScreenLimiter, TabButton } from 'Styles/common.styles';
 
-import { useLoggedUser } from '../../../Stores/loggedUser';
 import {
   FooterContainer,
   LeftActions,

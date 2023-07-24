@@ -4,20 +4,20 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import 'Styles/globals.css';
 import 'Assets/Fonts/Dosis-Regular.ttf';
 import 'Assets/Fonts/Dosis-Bold.ttf';
+
+import Footer from 'Components/Footer/Footer';
+import FullScreenLoader from 'Components/FullscreenLoader/FullScreenLoader';
+import Header from 'Components/Header/Header';
+import useCurrentPage from 'Hooks/useCurrentPage';
+import Chat from 'Pages/Chat';
+import Contacts from 'Pages/Contacts';
+import CreateGroup from 'Pages/CreateGroup';
 import Inbox from 'Pages/Inbox';
 import Login from 'Pages/Login';
 import NotFound from 'Pages/NotFound';
-
-import Footer from './Components/Footer/Footer';
-import FullScreenLoader from './Components/FullscreenLoader/FullScreenLoader';
-import Header from './Components/Header/Header';
-import useCurrentPage from './Hooks/useCurrentPage';
-import Chat from './Pages/Chat';
-import Contacts from './Pages/Contacts';
-import CreateGroup from './Pages/CreateGroup';
-import { useChatStore } from './Stores/chat';
-import { useLoggedUser } from './Stores/loggedUser';
-import { PageBody } from './Styles/common.styles';
+import { useChatStore } from 'Stores/chat';
+import { useLoggedUser } from 'Stores/loggedUser';
+import { PageBody } from 'Styles/common.styles';
 
 function App() {
   const { onAnimationEnd, displayLocation, transitionStage } =

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { ContactResource } from '../Models/ContactResource';
+import { ContactResource } from 'Models/ContactResource';
 
 export interface ChatGroupResource {
   isGroupMode: boolean;

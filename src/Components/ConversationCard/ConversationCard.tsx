@@ -42,7 +42,7 @@ export default function ConversationCard({ conversation }: Props) {
       {isGroup ? (
         <GroupAvatar>{capitalName ? capitalName.charAt(0) : 'U'}</GroupAvatar>
       ) : (
-        <ContactAvatar src={avatarUrl} />
+        <ContactAvatar height="60" width="60" loading="lazy" src={avatarUrl} />
       )}
       <ActivityInfo>
         <TopRow>

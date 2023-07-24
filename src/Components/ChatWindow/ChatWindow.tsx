@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
-import { ContactResource } from '../../Models/ContactResource';
-import { MessageResource } from '../../Models/MessageResource';
-import { useChatStore } from '../../Stores/chat';
+import { ContactResource } from 'Models/ContactResource';
+import { MessageResource } from 'Models/MessageResource';
+import { useChatStore } from 'Stores/chat';
+
 import Message from '../Message/Message';
 import MessageLoader from '../MessageLoader/Message';
 

@@ -8,11 +8,6 @@ export enum PagesEnum {
   notFound = 'not-found',
 }
 
-export enum VariantEnum {
-  primary = 'primary',
-  secondary = 'secondary',
-}
-
 export type Variant = 'primary' | 'secondary' | 'primaryDark' | 'secondaryDark';
 
 export type Size = 'small' | 'medium' | 'big';
