@@ -29,7 +29,7 @@ const useGetConversations = () => {
   }
 
   useEffect(() => {
-    if (data) {
+    if (data && data.length > 0) {
       const newData = formatConversations(data);
       newData.sort(compareDates);
       setFormattedData(newData);

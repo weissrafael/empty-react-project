@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { axiosRequest } from 'API/axiosInstance';
 import { QueryKeys } from 'API/QueryKeys';
 import { ContactApiResource } from 'Models/ContactResource';
-
-// import { axiosRequest } from 'API/axiosInstance';
 
 const mockResponseList: ContactApiResource[] = [
   {
@@ -61,9 +60,9 @@ const mockResponseSingle: ContactApiResource = {
 
 export const useFetchContacts = () => {
   return useQuery([QueryKeys.contactList], async () => {
-    // const response = await axiosRequest.get<ContactApiResource[]>(`/user`);
-    // return response.data;
-    return mockResponseList;
+    const response = await axiosRequest.get<ContactApiResource[]>(`/user`);
+    return response.data;
+    // return mockResponseList;
   });
 };
 

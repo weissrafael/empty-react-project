@@ -38,10 +38,13 @@ export const PageHeader = styled.div`
 `;
 
 export const ErrorHeader = styled(PageHeader)`
-  align-items: center;
+  align-items: flex-start;
   font-size: 1.8rem;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: ${spacing.large};
+  span {
+    font-size: 1rem;
+  }
 `;
 
 export const ScreenLimiter = styled.div`

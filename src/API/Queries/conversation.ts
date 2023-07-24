@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { axiosRequest } from 'API/axiosInstance';
 import { QueryKeys } from 'API/QueryKeys';
 import {
   ConversationApiResource,
   SingleConversationApiResource,
 } from 'Models/ConversationResource';
 
-// import { axiosRequest } from 'API/axiosInstance';
+import { mockedLoggedUser } from '../mockedLoggedUser';
 
 const mockResponseList: ConversationApiResource[] = [
   {
@@ -78,18 +79,22 @@ const mockResponseSingle: SingleConversationApiResource = {
   ],
 };
 
+const { id } = mockedLoggedUser;
+
 export const useFetchConversations = () => {
   return useQuery([QueryKeys.conversationList], async () => {
-    // const response = await axiosRequest.get<ConversationApiResource[]>(`/user`);
-    // return response.data;
-    return mockResponseList;
+    const response = await axiosRequest.get<ConversationApiResource[]>(
+      `/user/${id}/conversation`
+    );
+    return response.data;
   });
 };
 
 export const useFetchConversation = (id: string) => {
   return useQuery([QueryKeys.conversation + id], async () => {
-    // const response = await axiosRequest.get<ConversationApiResource>(`/user/${id}`);
-    // return response.data;
-    return mockResponseSingle;
+    const response = await axiosRequest.get<SingleConversationApiResource>(
+      `/user/${id}`
+    );
+    return response.data;
   });
 };
