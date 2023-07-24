@@ -13,7 +13,6 @@ function Chat() {
   const { data, isLoading } = useConversations.useGetSingleConversation(
     id || ''
   );
-  console.log(data);
   const { setChatIsLoading, setSelectedConversation } = useChatStore(
     (state) => state
   );

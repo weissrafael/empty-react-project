@@ -34,14 +34,11 @@ export default function ConversationCard({ conversation }: Props) {
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + contact.id + '.png';
   const capitalName = name?.charAt(0).toUpperCase() + name?.slice(1);
-  const { selectUser, setSelectedConversation } = useChatStore(
-    (state) => state
-  );
+  const { setSelectedConversation } = useChatStore((state) => state);
 
   function handleClick() {
     setSelectedConversation(conversation);
     navigate('/chat/' + id);
-    selectUser(contact);
   }
 
   return (

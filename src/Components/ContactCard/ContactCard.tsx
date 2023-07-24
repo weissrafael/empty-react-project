@@ -24,32 +24,37 @@ export default function ContactCard({ contact }: Props) {
   const navigate = useNavigate();
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-  const { selectUser } = useChatStore((state) => state);
   const { isGroupMode, addUser, selectedUsers, removeUser } = useGroupStore(
     (state) => state
   );
+  const { setScreenIsLoading } = useChatStore((state) => state);
   const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
   const isSelected =
     isForSelection && selectedUsers.some((user) => user.id === id);
 
   const mutateCreateConversation = useMutation(
     async () => {
+      setScreenIsLoading(true);
       return await createConversation([id], name);
     },
     {
       onSuccess: (data) => {
+        setScreenIsLoading(false);
         goToChat(data.data.id);
+      },
+      onError: () => {
+        setScreenIsLoading(false);
       },
     }
   );
 
   function goToChat(conversationId: number) {
-    selectUser(contact);
     navigate('/chat/' + conversationId);
   }
 
   function handleClick() {
     if (activePage === PagesEnum.createGroup) return;
+    if (mutateCreateConversation.isLoading) return;
     mutateCreateConversation.mutate();
   }
 
@@ -70,7 +75,6 @@ export default function ContactCard({ contact }: Props) {
       <ActivityInfo>
         <UserName isSelected={isSelected}>{capitalName}</UserName>
       </ActivityInfo>
-      <FullScreenLoader isLoading={mutateCreateConversation.isLoading} />
     </Card>
   );
 }

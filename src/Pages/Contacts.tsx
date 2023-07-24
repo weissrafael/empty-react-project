@@ -5,6 +5,7 @@ import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useContacts from 'Hooks/useContacts';
 import { CardList, PageHeader } from 'Styles/common.styles';
 
+import { mockedLoggedUser } from '../API/mockedLoggedUser';
 import ContactCard from '../Components/ContactCard/ContactCard';
 import { useGroupStore } from '../Stores/group';
 
@@ -32,7 +33,6 @@ function Contacts() {
 
   return (
     <>
-      {/*<FullScreenLoader isLoading={true} />*/}
       {!isError && !isLoading && dataFromApi.length > 0 && (
         <PageHeader>
           <h1>{isGroupMode ? 'New Group' : 'Contacts'}</h1>
@@ -44,9 +44,10 @@ function Contacts() {
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
       {!isError && !isLoading && (
         <CardList>
-          {dataFromApi.map((item) => (
-            <ContactCard key={item.id} contact={item} />
-          ))}
+          {dataFromApi.map((item) => {
+            if (item.id === mockedLoggedUser.id) return null;
+            return <ContactCard key={item.id} contact={item} />;
+          })}
         </CardList>
       )}
     </>
