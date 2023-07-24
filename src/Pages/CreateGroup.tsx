@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Feed from '../Components/Feed/Feed';
+import ContactCard from '../Components/ContactCard/ContactCard';
 import RoundButton from '../Components/RoundButton/RoundButton';
 import { useGroupStore } from '../Stores/group';
+import { CardList } from '../Styles/common.styles';
 import { LoginInput, Space } from '../Styles/login.styles';
 
 export default function CreateGroup() {
@@ -40,7 +41,11 @@ export default function CreateGroup() {
       </RoundButton>
       <Space />
       <Space />
-      <Feed data={selectedUsers} />
+      <CardList>
+        {selectedUsers.map((item) => (
+          <ContactCard key={item.id} contact={item} />
+        ))}
+      </CardList>
     </>
   );
 }

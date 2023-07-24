@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 
 import EmptyState from 'Components/EmptyState/EmptyState';
-import Feed from 'Components/Feed/Feed';
-import SkeletonFeed from 'Components/SkeletonFeed/Feed';
+import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useConversations from 'Hooks/useConversations';
-import { PageHeader } from 'Styles/common.styles';
+import { CardList, PageHeader } from 'Styles/common.styles';
+
+import ConversationCard from '../Components/ConversationCard/ConversationCard';
 
 function Inbox() {
   const {
@@ -27,7 +28,13 @@ function Inbox() {
       {isLoading && <SkeletonFeed />}
       {/*{isError && !isLoading && <ErrorState />}*/}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
-      {!isError && !isLoading && <Feed data={dataFromApi} />}
+      {!isError && !isLoading && (
+        <CardList>
+          {dataFromApi.map((item) => (
+            <ConversationCard key={item.id} contact={item} />
+          ))}
+        </CardList>
+      )}
     </>
   );
 }

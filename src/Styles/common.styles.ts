@@ -122,3 +122,10 @@ export const StyledCircularProgressModal = styled(CircularProgress)`
   margin-right: ${spacing.xSmall};
   width: ${modalLoaderSize}px !important;
 `;
+
+export const CardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+`;

@@ -1,13 +1,13 @@
 import { axiosRequest } from 'API/axiosInstance';
 
-export interface ArchiveContactRequest {
-  is_archived: boolean;
-}
+import { mockedLoggedUser } from '../mockedLoggedUser';
 
-export const patchArchiveContact = async (
-  request: ArchiveContactRequest,
-  id: string
-) => {
-  const response = await axiosRequest.patch<string>(`/contacts/${id}`, request);
+export const createConversation = async (userIds: number[]) => {
+  const response = await axiosRequest.post<string>(
+    `/user/${mockedLoggedUser.id}/conversation`,
+    {
+      user_ids: userIds,
+    }
+  );
   return response.data;
 };

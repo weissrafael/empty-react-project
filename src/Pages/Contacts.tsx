@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
 import EmptyState from 'Components/EmptyState/EmptyState';
-import Feed from 'Components/Feed/Feed';
-import SkeletonFeed from 'Components/SkeletonFeed/Feed';
+import SkeletonFeed from 'Components/SkeletonFeed/SkeletonFeed';
 import useContacts from 'Hooks/useContacts';
-import { PageHeader } from 'Styles/common.styles';
+import { CardList, PageHeader } from 'Styles/common.styles';
 
+import ContactCard from '../Components/ContactCard/ContactCard';
 import { useGroupStore } from '../Stores/group';
 
 function Contacts() {
@@ -42,7 +42,13 @@ function Contacts() {
       {isLoading && <SkeletonFeed />}
       {/*{isError && !isLoading && <ErrorState />}*/}
       {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
-      {!isError && !isLoading && <Feed data={dataFromApi} />}
+      {!isError && !isLoading && (
+        <CardList>
+          {dataFromApi.map((item) => (
+            <ContactCard key={item.id} contact={item} />
+          ))}
+        </CardList>
+      )}
     </>
   );
 }

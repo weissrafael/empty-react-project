@@ -1,8 +1,7 @@
 import React from 'react';
 
 import CardSkeletonLoader from 'Components/CardSkeletonLoader/CardSkeletonLoader';
-import { ContactsList } from 'Components/Feed/styles';
-import { PageHeader } from 'Styles/common.styles';
+import { CardList, PageHeader } from 'Styles/common.styles';
 
 const skeletonArray = Array.from(Array(10).keys());
 
@@ -12,11 +11,11 @@ export default function SkeletonFeed() {
       <PageHeader>
         <h1>Loading...</h1>
       </PageHeader>
-      <ContactsList>
+      <CardList>
         {skeletonArray.map((item) => (
           <CardSkeletonLoader key={item} />
         ))}
-      </ContactsList>
+      </CardList>
     </>
   );
 }
