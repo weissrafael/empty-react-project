@@ -9,7 +9,7 @@ In order to run the app locally, you need to have [Node.js](https://nodejs.org/e
 Then you will need to install the dependencies by running the following command in the project directory:
 ## Login
 
-type any email that starts with an integer from 1 to 9, that will be your user id! example: 3bram@bunq.com
+type any email that starts with an integer from 1 to 10, that will be your user id! example: 3bram@bunq.com
 
 1 - ali
 2 - andre
@@ -43,7 +43,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## App Features
 - [x] Enter a username + password to login
-- [x] Type any email that starts with an integer from 1 to 9, that will be your user id!
+- [x] Type any email that starts with an integer from 1 to 10, that will be your user id!
 - [x] Login input validations for email and password
 - [x] Messages ordered by most recent
 - [x] Last message and date of last message displayed in the chat list
