@@ -10,6 +10,7 @@ import useCurrentPage from '../../Hooks/useCurrentPage';
 import { PagesEnum } from '../../Models/UserInterfaceResources';
 import { useChatStore } from '../../Stores/chat';
 import { useGroupStore } from '../../Stores/group';
+import { useLoggedUser } from '../../Stores/loggedUser';
 import FullScreenLoader from '../FullscreenLoader/FullScreenLoader';
 
 import { ActivityInfo, Card, ContactAvatar, UserName } from './styles';
@@ -20,6 +21,7 @@ interface Props {
 
 export default function ContactCard({ contact }: Props) {
   const { id, name } = contact;
+  const { loggedUser } = useLoggedUser((state) => state);
   const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
   const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
@@ -35,7 +37,7 @@ export default function ContactCard({ contact }: Props) {
   const mutateCreateConversation = useMutation(
     async () => {
       setScreenIsLoading(true);
-      return await createConversation([id], name);
+      return await createConversation([id], name, loggedUser.id);
     },
     {
       onSuccess: (data) => {

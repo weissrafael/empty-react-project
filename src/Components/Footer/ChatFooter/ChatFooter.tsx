@@ -7,11 +7,13 @@ import { ScreenLimiter } from 'Styles/common.styles';
 import { createMessage } from '../../../API/Mutations/message';
 import useMessages from '../../../Hooks/useMessages';
 import { useChatStore } from '../../../Stores/chat';
+import { useLoggedUser } from '../../../Stores/loggedUser';
 import RoundButton from '../../RoundButton/RoundButton';
 import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
 
 function ChatFooter() {
   const [text, setText] = useState('');
+  const { loggedUser } = useLoggedUser((state) => state);
   const { selectedConversation, setChatIsLoading } = useChatStore(
     (state) => state
   );
@@ -24,7 +26,7 @@ function ChatFooter() {
   const mutateCreateConversation = useMutation(
     async () => {
       setChatIsLoading(true);
-      return await createMessage(selectedConversation.id, text);
+      return await createMessage(selectedConversation.id, text, loggedUser.id);
     },
     {
       onSuccess: () => {

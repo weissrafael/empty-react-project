@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { SiteLogo } from '../Components/Header/styles';
 import RoundButton from '../Components/RoundButton/RoundButton';
+import { useChatStore } from '../Stores/chat';
+import { useLoggedUser } from '../Stores/loggedUser';
 import { LoginContainer, LoginInput, Space } from '../Styles/login.styles';
 import { spacing } from '../Styles/styleGuide';
 
@@ -12,6 +14,7 @@ function Login() {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
+  const { setLoggedUser } = useLoggedUser((state) => state);
 
   const validateEmail = (email: string) => {
     if (username === '') {
@@ -37,6 +40,11 @@ function Login() {
     validateEmail(username);
     validatePassword(password);
     if (!usernameError && !passwordError) {
+      let id = 7;
+      if (username.charAt(0) >= '0' && username.charAt(0) <= '9') {
+        id = parseInt(username.charAt(0));
+      }
+      setLoggedUser({ id, name: '', lastSeenAt: '' });
       navigate('/inbox');
     }
   };

@@ -7,11 +7,13 @@ import ContactCard from '../Components/ContactCard/ContactCard';
 import RoundButton from '../Components/RoundButton/RoundButton';
 import { useChatStore } from '../Stores/chat';
 import { useGroupStore } from '../Stores/group';
+import { useLoggedUser } from '../Stores/loggedUser';
 import { CardList } from '../Styles/common.styles';
 import { LoginInput, Space } from '../Styles/login.styles';
 
 export default function CreateGroup() {
   const { selectedUsers, reset } = useGroupStore((state) => state);
+  const { loggedUser } = useLoggedUser((state) => state);
   const { setScreenIsLoading } = useChatStore((state) => state);
   const usersIds = selectedUsers.map((item) => item.id);
   const [text, setText] = useState<string>('');
@@ -20,7 +22,7 @@ export default function CreateGroup() {
   const mutateCreateConversation = useMutation(
     async () => {
       setScreenIsLoading(true);
-      return await createConversation(usersIds, text);
+      return await createConversation(usersIds, text, loggedUser.id);
     },
     {
       onSuccess: (data) => {

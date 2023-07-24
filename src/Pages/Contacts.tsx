@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 
-import { mockedLoggedUser } from 'API/mockedLoggedUser';
 import ContactCard from 'Components/ContactCard/ContactCard';
 import EmptyState from 'Components/EmptyState/EmptyState';
 import ErrorState from 'Components/ErrorState/ErrorState';
@@ -9,10 +8,14 @@ import useContacts from 'Hooks/useContacts';
 import { useGroupStore } from 'Stores/group';
 import { CardList, PageHeader } from 'Styles/common.styles';
 
+import { useLoggedUser } from '../Stores/loggedUser';
+
 function Contacts() {
   const { isGroupMode, selectedUsers, setUsersAvailable } = useGroupStore(
     (state) => state
   );
+  const { loggedUser } = useLoggedUser((state) => state);
+
   const {
     isLoading,
     isError,
@@ -58,7 +61,7 @@ function Contacts() {
         </PageHeader>
         <CardList>
           {dataFromApi.map((item) => {
-            if (item.id === mockedLoggedUser.id) return null;
+            if (item.id === loggedUser.id) return null;
             return <ContactCard key={item.id} contact={item} />;
           })}
         </CardList>

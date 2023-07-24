@@ -43,9 +43,6 @@ export const ActivityInfo = styled.div`
   overflow: hidden;
   padding-right: ${spacing.small};
   width: 100%;
-  @media (min-width: ${screens.medium}px) {
-    padding-right: ${spacing.medium};
-  }
 `;
 
 export const TopRow = styled.div`

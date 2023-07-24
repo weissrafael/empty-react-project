@@ -4,27 +4,26 @@ import { axiosRequest } from 'API/axiosInstance';
 import { QueryKeys } from 'API/QueryKeys';
 import {
   ConversationsResponseResource,
-  ConversationApiResource,
   ConversationResponseResource,
 } from 'Models/ConversationResource';
 
-import { mockedLoggedUser } from '../mockedLoggedUser';
-
-const { id } = mockedLoggedUser;
+import { useLoggedUser } from '../../Stores/loggedUser';
 
 export const useFetchConversations = () => {
+  const { loggedUser } = useLoggedUser((state) => state);
   return useQuery([QueryKeys.conversationList], async () => {
     const response = await axiosRequest.get<ConversationsResponseResource>(
-      `/user/${id}/conversation`
+      `/user/${loggedUser.id}/conversation`
     );
     return response.data;
   });
 };
 
 export const useFetchConversation = (id: string) => {
+  const { loggedUser } = useLoggedUser((state) => state);
   return useQuery([QueryKeys.conversation + id], async () => {
     const response = await axiosRequest.get<ConversationResponseResource>(
-      `/user/${mockedLoggedUser.id}/conversation/${id}`
+      `/user/${loggedUser.id}/conversation/${id}`
     );
     return response.data;
   });

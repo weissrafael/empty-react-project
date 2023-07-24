@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { mockedLoggedUser } from '../../API/mockedLoggedUser';
 import { AWSUserAvatarUrl } from '../../Constants/AWS';
 import { ContactResource } from '../../Models/ContactResource';
 import { MessageResource } from '../../Models/MessageResource';
+import { useLoggedUser } from '../../Stores/loggedUser';
 
 import {
   ChatAvatar,
@@ -21,7 +21,8 @@ interface Props {
 
 export default function Message({ message, members }: Props) {
   const membersIds = members?.map((member) => member.id);
-  const isFromOtherUser = message?.userId !== mockedLoggedUser.id;
+  const { loggedUser } = useLoggedUser((state) => state);
+  const isFromOtherUser = message?.userId !== loggedUser.id;
   const isGroup = membersIds && membersIds?.length > 2;
   const messageOwner = members?.find((member) => member.id === message?.userId);
   const capitalName = messageOwner
