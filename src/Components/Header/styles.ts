@@ -88,6 +88,9 @@ export const TopLeftTabButton = styled(TopRightTabButton)`
 
 export const ChatContactAvatar = styled.img`
   max-width: 42px;
+  @media (min-width: ${screens.medium}px) {
+    max-width: 56px;
+  }
 `;
 
 export const UserName = styled.div<{ isGroup: boolean }>`
@@ -102,6 +105,9 @@ export const UserName = styled.div<{ isGroup: boolean }>`
     right: 0;
     top: ${isGroup ? -2 : -6}px;
     width: 100%;
+    @media (min-width: ${screens.medium}px) {
+      top: ${isGroup ? -4 : -8}px;
+    }
   `}
 `;
 
@@ -124,6 +130,6 @@ export const LastSeenAt = styled.div`
   top: -4px;
   width: 100%;
   @media (min-width: ${screens.medium}px) {
-    top: -11px;
+    top: -13px;
   }
 `;
