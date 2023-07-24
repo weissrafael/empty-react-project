@@ -3,9 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import { axiosRequest } from 'API/axiosInstance';
 import { QueryKeys } from 'API/QueryKeys';
 import {
-  ConversationApiResource,
+  ConversationsResponseResource,
   SingleConversationApiResource,
-} from 'Models/ConversationResource';
+} from 'Models/ConversationsResource';
 
 import { mockedLoggedUser } from '../mockedLoggedUser';
 
@@ -13,7 +13,7 @@ const { id } = mockedLoggedUser;
 
 export const useFetchConversations = () => {
   return useQuery([QueryKeys.conversationList], async () => {
-    const response = await axiosRequest.get<ConversationApiResource[]>(
+    const response = await axiosRequest.get<ConversationsResponseResource>(
       `/user/${id}/conversation`
     );
     return response.data;

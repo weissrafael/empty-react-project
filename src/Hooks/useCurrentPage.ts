@@ -17,7 +17,6 @@ const useCurrentPage = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    console.log(path);
     setTimeout(() => {
       if (path === '/') {
         setActivePage(PagesEnum.login);

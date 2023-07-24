@@ -1,23 +1,23 @@
 import {
-  ConversationResource,
-  ConversationApiResource,
+  ConversationsResource,
+  ConversationsApiResource,
   SingleConversationResource,
   SingleConversationApiResource,
-} from 'Models/ConversationResource';
+} from 'Models/ConversationsResource';
 
 import { formatContact } from './ContactMapper';
 
 export function formatConversations(
-  conversations: ConversationApiResource[]
-): ConversationResource[] {
+  conversations: ConversationsApiResource[]
+): ConversationsResource[] {
   return conversations.map((conversation) => {
     return conversationApiToFrontResource(conversation);
   });
 }
 
 export const conversationApiToFrontResource = (
-  conversation: ConversationApiResource
-): ConversationResource => {
+  conversation: ConversationsApiResource
+): ConversationsResource => {
   const { id, name, last_seen_at } = conversation;
   return {
     id,

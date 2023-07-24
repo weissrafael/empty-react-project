@@ -6,31 +6,30 @@ import {
 } from 'API/Queries/conversation';
 
 import {
-  conversationApiToFrontResource,
   formatConversations,
   singleConversationApiToFrontResource,
 } from '../Mappers/ConversationMapper';
 import {
-  ConversationResource,
+  ConversationsResource,
   SingleConversationResource,
-} from '../Models/ConversationResource';
+} from '../Models/ConversationsResource';
 
 const useGetConversations = () => {
   const { data, isLoading, isError } = useFetchConversations();
 
-  const [formattedData, setFormattedData] = useState<ConversationResource[]>(
+  const [formattedData, setFormattedData] = useState<ConversationsResource[]>(
     []
   );
 
-  function compareDates(a: ConversationResource, b: ConversationResource) {
+  function compareDates(a: ConversationsResource, b: ConversationsResource) {
     const dateA = new Date(a.lastSeenAt);
     const dateB = new Date(b.lastSeenAt);
     return dateB.getTime() - dateA.getTime();
   }
 
   useEffect(() => {
-    if (data && data.length > 0) {
-      const newData = formatConversations(data);
+    if (data) {
+      const newData = formatConversations(data.data);
       newData.sort(compareDates);
       setFormattedData(newData);
     }
