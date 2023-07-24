@@ -54,6 +54,11 @@ function Login() {
     }
   }
 
+  function handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
+    validatePassword();
+    setPassword(e.target.value);
+  }
+
   return (
     <LoginContainer>
       <SiteLogo
@@ -100,6 +105,7 @@ function Login() {
         onChange={(e) => setUsername(e.target.value)}
         helperText={usernameError}
         error={!!usernameError}
+        type="email"
         onKeyPress={handleKeyPress}
         onBlur={validateEmail}
       />
@@ -107,7 +113,7 @@ function Login() {
         type="password"
         label="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={handlePasswordChange}
         helperText={passwordError}
         error={!!passwordError}
         onKeyPress={handleKeyPress}
