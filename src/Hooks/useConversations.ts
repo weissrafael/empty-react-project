@@ -18,16 +18,16 @@ const useGetConversations = () => {
     []
   );
 
-  // function compareDates(a: ConversationResource, b: ConversationResource) {
-  //   const dateA = new Date(a.lastMessage?.sentAt ?? 0);
-  //   const dateB = new Date(b.lastMessage?.sentAt ?? 0);
-  //   return dateB.getTime() - dateA.getTime();
-  // }
+  function compareDates(a: ConversationResource, b: ConversationResource) {
+    const dateA = new Date(a.lastMessage?.sentAt ?? 0);
+    const dateB = new Date(b.lastMessage?.sentAt ?? 0);
+    return dateB.getTime() - dateA.getTime();
+  }
 
   useEffect(() => {
     if (data) {
       const newData = formatConversations(data.data);
-      // newData.sort(compareDates);
+      newData.sort(compareDates);
       setFormattedData(newData);
     }
   }, [data]);

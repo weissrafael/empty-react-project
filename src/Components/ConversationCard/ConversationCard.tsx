@@ -12,6 +12,8 @@ import {
   ContactAvatar,
   GroupAvatar,
   LastSeenAt,
+  MessageDate,
+  TopRow,
   UserName,
 } from './styles';
 
@@ -43,7 +45,10 @@ export default function ConversationCard({ conversation }: Props) {
         <ContactAvatar src={avatarUrl} />
       )}
       <ActivityInfo>
-        <UserName>{capitalName ? capitalName : 'Unknown'}</UserName>
+        <TopRow>
+          <UserName>{capitalName ? capitalName : 'Unknown'}</UserName>
+          <MessageDate>{sentAt ? date : ''}</MessageDate>
+        </TopRow>
         <LastSeenAt>{text ? text : 'new chat'}</LastSeenAt>
       </ActivityInfo>
     </Card>

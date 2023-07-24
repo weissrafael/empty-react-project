@@ -12,7 +12,7 @@ export const formatTime = (timestampStr: string): string => {
   const diffInMonths = Math.floor(diffInDays / 30);
   const diffInYears = Math.floor(diffInDays / 365);
 
-  if (diffInSeconds < 20) return 'a few seconds ago';
+  if (diffInSeconds < 60) return 'a few seconds ago';
   if (diffInHours < 1)
     return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
   if (diffInDays < 1)
