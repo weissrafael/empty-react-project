@@ -3,4 +3,5 @@ export enum QueryKeys {
   contact = 'contact',
   conversationList = 'conversationList',
   conversation = 'conversation',
+  messages = 'messages',
 }

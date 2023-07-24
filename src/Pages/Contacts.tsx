@@ -30,6 +30,8 @@ function Contacts() {
       ? 'Select the contacts you want for the new group'
       : 'Click on a contact to start a conversation';
 
+  console.log(dataFromApi);
+
   return (
     <>
       {/*<FullScreenLoader isLoading={true} />*/}

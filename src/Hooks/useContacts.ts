@@ -11,8 +11,8 @@ const useGetContacts = () => {
   const [formattedData, setFormattedData] = useState<ContactResource[]>([]);
 
   function compareNames(a: ContactResource, b: ContactResource) {
-    const nameA = a.name.toUpperCase(); // Ignore case
-    const nameB = b.name.toUpperCase(); // Ignore case
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
     if (nameA < nameB) {
       return -1;
     }
@@ -24,7 +24,7 @@ const useGetContacts = () => {
 
   useEffect(() => {
     if (data) {
-      const newData = formatContacts(data);
+      const newData = formatContacts(data.data);
       newData.sort(compareNames);
       setFormattedData(newData);
     }
