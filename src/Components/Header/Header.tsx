@@ -4,8 +4,8 @@ import useCurrentPage from 'Hooks/useCurrentPage';
 import { PagesEnum } from 'Models/UserInterfaceResources';
 
 import ChatHeader from './ChatHeader/ChatHeader';
-import CreateGroupHeader from './ContactsHeader/ContactsHeader';
-import ContactsHeader from './CreateGroupHeader/CreateGroupHeader';
+import ContactsHeader from './ContactsHeader/ContactsHeader';
+import CreateGroupHeader from './CreateGroupHeader/CreateGroupHeader';
 import InboxHeader from './InboxHeader/InboxHeader';
 
 function Header() {

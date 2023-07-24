@@ -10,16 +10,15 @@ import { useGroupStore } from 'Stores/group';
 import { CardList, PageHeader } from 'Styles/common.styles';
 
 function Contacts() {
-  const { isGroupMode, selectedUsers } = useGroupStore((state) => state);
+  const { isGroupMode, selectedUsers, setUsersAvailable } = useGroupStore(
+    (state) => state
+  );
   const {
     isLoading,
     isError,
     data: dataFromApi,
   } = useContacts.useGetContacts();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const selectedUsersLength = selectedUsers.length;
 
   const subtitle =
@@ -31,27 +30,40 @@ function Contacts() {
       ? 'Select the contacts you want for the new group'
       : 'Click on a contact to start a conversation';
 
-  return (
-    <>
-      {!isError && (
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (dataFromApi) {
+      setUsersAvailable(dataFromApi);
+    }
+  }, [dataFromApi, setUsersAvailable]);
+
+  if (isError) return <ErrorState />;
+  else if (isLoading) return <SkeletonFeed />;
+  else if (dataFromApi.length === 0)
+    return (
+      <EmptyState
+        title="No contacts available..."
+        subtitle="Check if your phone call app to create new phone contacts"
+      />
+    );
+  else
+    return (
+      <>
         <PageHeader>
           <h1>{isGroupMode ? 'New Group' : 'Contacts'}</h1>
           <span>{subtitle}</span>
         </PageHeader>
-      )}
-      {isLoading && <SkeletonFeed />}
-      {isError && !isLoading && <ErrorState />}
-      {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
-      {!isError && !isLoading && (
         <CardList>
           {dataFromApi.map((item) => {
             if (item.id === mockedLoggedUser.id) return null;
             return <ContactCard key={item.id} contact={item} />;
           })}
         </CardList>
-      )}
-    </>
-  );
+      </>
+    );
 }
 
 export default React.memo(Contacts);

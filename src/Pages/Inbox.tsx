@@ -13,32 +13,34 @@ function Inbox() {
     isLoading,
     isError,
     data: dataFromApi,
-    isFetching,
   } = useConversations.useGetConversations();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
-    <>
-      {!isError && (
+  if (isError) return <ErrorState />;
+  else if (isLoading) return <SkeletonFeed />;
+  else if (dataFromApi.length === 0)
+    return (
+      <EmptyState
+        title="No conversations yet!"
+        subtitle="Start a new one by clicking on the add button"
+      />
+    );
+  else
+    return (
+      <>
         <PageHeader>
           <h1>Inbox</h1>
         </PageHeader>
-      )}
-      {(isLoading || isFetching) && <SkeletonFeed />}
-      {isError && !isLoading && <ErrorState />}
-      {!isError && !isLoading && dataFromApi.length === 0 && <EmptyState />}
-      {!isError && !isLoading && (
         <CardList>
           {dataFromApi.map((item) => (
             <ConversationCard key={item.id} conversation={item} />
           ))}
         </CardList>
-      )}
-    </>
-  );
+      </>
+    );
 }
 
 export default React.memo(Inbox);

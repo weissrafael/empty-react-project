@@ -6,6 +6,8 @@ export interface ChatGroupResource {
   isGroupMode: boolean;
   setIsGroupMode: (isLoading: boolean) => void;
   selectedUsers: ContactResource[];
+  usersAvailable: ContactResource[];
+  setUsersAvailable: (users: ContactResource[]) => void;
   addUser: (user: ContactResource) => void;
   removeUser: (user: ContactResource) => void;
   reset: () => void;
@@ -14,6 +16,9 @@ export interface ChatGroupResource {
 export const useGroupStore = create<ChatGroupResource>((set) => ({
   isGroupMode: false,
   selectedUsers: [],
+  usersAvailable: [],
+  setUsersAvailable: (users: ContactResource[]) =>
+    set(() => ({ usersAvailable: users })),
   reset: () =>
     set(() => {
       return { isGroupMode: false, selectedUsers: [] };
