@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { ScreenLimiter } from 'Styles/common.styles';
 
 import { createMessage } from '../../../API/Mutations/message';
+import useMessages from '../../../Hooks/useMessages';
 import { useChatStore } from '../../../Stores/chat';
 import RoundButton from '../../RoundButton/RoundButton';
 import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
@@ -14,6 +15,7 @@ function ChatFooter() {
   const { selectedConversation, setChatIsLoading } = useChatStore(
     (state) => state
   );
+  const { refetch } = useMessages.useGetMessage(selectedConversation.id);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
@@ -21,14 +23,15 @@ function ChatFooter() {
 
   const mutateCreateConversation = useMutation(
     async () => {
+      setChatIsLoading(true);
       return await createMessage(selectedConversation.id, text);
     },
     {
       onSuccess: () => {
         setText('');
+        refetch();
       },
-      onError: (error) => {
-        console.log(error);
+      onError: () => {
         setText('');
       },
     }
@@ -38,10 +41,6 @@ function ChatFooter() {
   const handleSend = () => {
     mutateCreateConversation.mutate();
   };
-
-  useEffect(() => {
-    setChatIsLoading(isLoading);
-  }, [isLoading, setChatIsLoading]);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
