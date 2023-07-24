@@ -1,43 +1,48 @@
 import SendIcon from '@mui/icons-material/Send';
-import React, { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 
-import useCurrentPage from 'Hooks/useCurrentPage';
-import { PagesEnum } from 'Models/UserInterfaceResources';
 import { ScreenLimiter } from 'Styles/common.styles';
 
-import { MessageResource } from '../../../Models/MessageResource';
+import { createConversation } from '../../../API/Mutations/contact';
+import { createMessage } from '../../../API/Mutations/message';
 import { useChatStore } from '../../../Stores/chat';
 import RoundButton from '../../RoundButton/RoundButton';
 import { ButtonContainer, ChatFooterContainer, MessageInput } from '../styles';
 
 function ChatFooter() {
   const [text, setText] = useState('');
-  const { activePage } = useCurrentPage.useCurrentPage();
-  const { addMessage, setChatIsLoading } = useChatStore((state) => state);
+  const { selectedConversation, setChatIsLoading } = useChatStore(
+    (state) => state
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
 
-  if (activePage === PagesEnum.login) return null;
-
-  const randomId = () => {
-    return Math.floor(Math.random() * 1000000);
-  };
+  const mutateCreateConversation = useMutation(
+    async () => {
+      return await createMessage(selectedConversation.id, text);
+    },
+    {
+      onSuccess: () => {
+        setText('');
+      },
+      onError: (error) => {
+        console.log(error);
+        setText('');
+      },
+    }
+  );
+  const { isLoading } = mutateCreateConversation;
 
   const handleSend = () => {
-    setChatIsLoading(true);
-    setTimeout(() => {
-      setChatIsLoading(false);
-      addMessage({
-        id: randomId(),
-        userId: 999,
-        text: text,
-        sentAt: new Date().toString(),
-      });
-    }, 1000);
-    setText('');
+    mutateCreateConversation.mutate();
   };
+
+  useEffect(() => {
+    setChatIsLoading(isLoading);
+  }, [isLoading, setChatIsLoading]);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -62,7 +67,7 @@ function ChatFooter() {
           />
           <ButtonContainer>
             <RoundButton
-              disabled={!text}
+              disabled={!text || isLoading}
               variant="primaryDark"
               style={{
                 height: 46,

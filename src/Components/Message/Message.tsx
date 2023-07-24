@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { mockedLoggedUser } from '../../API/mockedLoggedUser';
 import { AWSUserAvatarUrl } from '../../Constants/AWS';
 import { ContactResource } from '../../Models/ContactResource';
 import { MessageResource } from '../../Models/MessageResource';
@@ -21,7 +22,7 @@ interface Props {
 
 export default function Message({ message, members }: Props) {
   const membersIds = members?.map((member) => member.id);
-  const isFromUser = membersIds?.includes(message?.userId || 0);
+  const isFromUser = message?.userId !== mockedLoggedUser.id;
   const isGroup = membersIds?.length && membersIds?.length > 2;
   const messageOwner = members?.find((member) => member.id === message?.userId);
   const capitalName = messageOwner

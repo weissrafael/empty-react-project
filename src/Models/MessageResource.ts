@@ -19,3 +19,7 @@ export interface MessageResponseResource {
   links: LinksResource;
   meta: MetaResource;
 }
+
+export interface SingleMessageResponseResource {
+  data: MessageApiResource;
+}
