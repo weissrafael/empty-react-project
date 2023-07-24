@@ -10,6 +10,7 @@ import { CardList, PageHeader } from 'Styles/common.styles';
 function Inbox() {
   const {
     isLoading,
+    isFetching,
     isError,
     data: dataFromApi,
   } = useConversations.useGetConversations();
@@ -19,8 +20,16 @@ function Inbox() {
   }, []);
 
   if (isError) return <ErrorState />;
-  else if (isLoading) return <SkeletonFeed />;
-  else if (!dataFromApi.length)
+  else if (isLoading || isFetching) {
+    return (
+      <>
+        <PageHeader>
+          <h1>Inbox</h1>
+        </PageHeader>
+        <SkeletonFeed />
+      </>
+    );
+  } else if (!dataFromApi.length)
     return (
       <EmptyState
         title="No conversations yet!"

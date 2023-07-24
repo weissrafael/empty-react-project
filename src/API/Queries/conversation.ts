@@ -11,12 +11,16 @@ import { useLoggedUser } from '../../Stores/loggedUser';
 
 export const useFetchConversations = () => {
   const { loggedUser } = useLoggedUser((state) => state);
-  return useQuery([QueryKeys.conversationList], async () => {
-    const response = await axiosRequest.get<ConversationsResponseResource>(
-      `/user/${loggedUser.id}/conversation`
-    );
-    return response.data;
-  });
+  return useQuery(
+    [QueryKeys.conversationList],
+    async () => {
+      const response = await axiosRequest.get<ConversationsResponseResource>(
+        `/user/${loggedUser.id}/conversation`
+      );
+      return response.data;
+    },
+    { refetchOnWindowFocus: false }
+  );
 };
 
 export const useFetchConversation = (id: string) => {
