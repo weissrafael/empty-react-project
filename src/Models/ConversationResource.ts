@@ -5,6 +5,7 @@ export interface ConversationApiResource {
   id: number;
   name: string;
   members: ContactApiResource[];
+  last_message?: string;
 }
 
 export interface ConversationResource {
@@ -17,4 +18,8 @@ export interface ConversationsResponseResource {
   data: ConversationApiResource[];
   links: LinksResource;
   meta: MetaResource;
+}
+
+export interface ConversationResponseResource {
+  data: ConversationApiResource;
 }

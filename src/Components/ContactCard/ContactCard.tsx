@@ -34,18 +34,18 @@ export default function ContactCard({ contact }: Props) {
 
   const mutateCreateConversation = useMutation(
     async () => {
-      await createConversation([id], name);
+      return await createConversation([id], name);
     },
     {
-      onSuccess: () => {
-        goToChat();
+      onSuccess: (data) => {
+        goToChat(data.data.id);
       },
     }
   );
 
-  function goToChat() {
+  function goToChat(conversationId: number) {
     selectUser(contact);
-    navigate('/chat/' + id);
+    navigate('/chat/' + conversationId);
   }
 
   function handleClick() {

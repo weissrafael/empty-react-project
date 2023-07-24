@@ -30,7 +30,7 @@ export default function ConversationCard({ conversation }: Props) {
   const { activePage } = useCurrentPage.useCurrentPage();
   const navigate = useNavigate();
   const date = formatTime(lastSeenAt);
-  const avatarUrl = AWSUserAvatarUrl + 'user' + id + '.png';
+  const avatarUrl = AWSUserAvatarUrl + 'user' + contact.id + '.png';
   const capitalName = name?.charAt(0).toUpperCase() + name?.slice(1);
   const { selectUser } = useChatStore((state) => state);
   const { isGroupMode, addUser, selectedUsers, removeUser } = useGroupStore(
