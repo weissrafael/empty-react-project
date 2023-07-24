@@ -18,7 +18,7 @@ const { callTimeHeight, cardHeight, groupedCallBubbleSize, archiveButtonSize } =
   componentSize;
 
 export const Card = styled.div<{
-  isSelected: boolean;
+  isSelected?: boolean;
 }>`
   ${({ isSelected }) => css`
     align-items: center;
@@ -51,7 +51,7 @@ export const ContactAvatar = styled.img`
 `;
 
 export const UserName = styled.div<{
-  isSelected: boolean;
+  isSelected?: boolean;
 }>`
   ${({ isSelected }) => css`
     align-items: center;

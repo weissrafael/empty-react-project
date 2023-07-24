@@ -32,38 +32,21 @@ export default function ConversationCard({ conversation }: Props) {
   const date = formatTime(lastSeenAt);
   const avatarUrl = AWSUserAvatarUrl + 'user' + contact.id + '.png';
   const capitalName = name?.charAt(0).toUpperCase() + name?.slice(1);
-  const { selectUser } = useChatStore((state) => state);
-  const { isGroupMode, addUser, selectedUsers, removeUser } = useGroupStore(
+  const { selectUser, setSelectedConversation } = useChatStore(
     (state) => state
   );
-  const isForSelection = isGroupMode && activePage === PagesEnum.contacts;
-  const isSelected =
-    isForSelection && selectedUsers.some((user) => user.id === id);
 
   function handleClick() {
-    if (activePage === PagesEnum.createGroup) return;
+    setSelectedConversation(conversation);
     navigate('/chat/' + id);
     selectUser(contact);
   }
 
-  function handleSelectionClick() {
-    if (isSelected) {
-      removeUser(contact);
-    } else {
-      addUser(contact);
-    }
-  }
-
   return (
-    <Card
-      isSelected={isSelected}
-      onClick={isForSelection ? handleSelectionClick : handleClick}
-    >
+    <Card onClick={handleClick}>
       <ContactAvatar src={avatarUrl} />
       <ActivityInfo>
-        <UserName isSelected={isSelected}>
-          {capitalName ? capitalName : 'Unknown'}
-        </UserName>
+        <UserName>{capitalName ? capitalName : 'Unknown'}</UserName>
         {activePage === PagesEnum.inbox && <LastSeenAt>{date}</LastSeenAt>}
       </ActivityInfo>
     </Card>

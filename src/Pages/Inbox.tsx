@@ -18,8 +18,6 @@ function Inbox() {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log('dataFromApi', dataFromApi);
-
   return (
     <>
       {!isError && !isLoading && dataFromApi.length > 0 && (

@@ -1,3 +1,5 @@
+import { LinksResource, MetaResource } from './ApiResource';
+
 export interface MessageApiResource {
   id: number;
   user_id: number;
@@ -10,4 +12,10 @@ export interface MessageResource {
   userId: number;
   text: string;
   sentAt: string;
+}
+
+export interface MessageResponseResource {
+  data: MessageApiResource[];
+  links: LinksResource;
+  meta: MetaResource;
 }

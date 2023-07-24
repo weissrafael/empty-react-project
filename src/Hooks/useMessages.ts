@@ -17,7 +17,7 @@ const useGetMessage = (id: string) => {
 
   useEffect(() => {
     if (data) {
-      const newData = formatMessages(data);
+      const newData = formatMessages(data.data);
       newData.sort(compareDates);
       setFormattedData(newData);
     }
