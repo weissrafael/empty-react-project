@@ -40,7 +40,7 @@ function Login() {
     validatePassword();
     if (!usernameError && !passwordError) {
       let id = 7;
-      if (username.charAt(0) >= '1' && username.charAt(0) <= '9') {
+      if (username.charAt(0) >= '1' && username.charAt(0) <= '10') {
         id = parseInt(username.charAt(0));
       }
       setLoggedUser({ id, name: '', lastSeenAt: '' });

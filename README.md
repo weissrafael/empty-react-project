@@ -9,12 +9,18 @@ In order to run the app locally, you need to have [Node.js](https://nodejs.org/e
 Then you will need to install the dependencies by running the following command in the project directory:
 ## Login
 
-type any email that starts with an integer from 1 to 9, that will be your user id! example: 3jake@bunq.com
+type any email that starts with an integer from 1 to 9, that will be your user id! example: 3bram@bunq.com
 
 1 - ali
 2 - andre
 3 - bram
-4 - 
+4 - hilco
+5 - jesper
+6 - jordy
+7 - mdemaa
+8 - nick
+9 - sonnya
+10 - wessel
 
 ### `yarn install`
 
