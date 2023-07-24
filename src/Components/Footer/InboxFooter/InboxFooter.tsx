@@ -33,7 +33,7 @@ function InboxFooter() {
       <FooterContainer>
         <ScreenLimiter>
           <LeftActions>
-            <TabButton>
+            <TabButton to="/inbox">
               <LocalPhoneIcon />
               <NotificationBubble>{mockNumberOfCalls}</NotificationBubble>
             </TabButton>
