@@ -55,6 +55,15 @@ export const ScreenLimiter = styled.div`
   width: 100%;
 `;
 
+export const StateContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const ScreenLimiterChat = styled(ScreenLimiter)`
   align-items: center;
 `;
@@ -65,10 +74,8 @@ export const ScreenLimiterContacts = styled(ScreenLimiter)`
 `;
 
 export const ErrorImage = styled.img`
-  margin-top: ${spacing.large};
   width: 18rem;
   @media (min-width: ${screens.medium}px) {
-    margin-top: ${spacing.small};
     width: 15rem;
   }
 `;

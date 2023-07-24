@@ -1,7 +1,12 @@
 import React from 'react';
 
 import { AWSIllustrationsUrl, IllustrationNames } from 'Constants/AWS';
-import { ErrorHeader, ErrorImage, PageBody } from 'Styles/common.styles';
+import {
+  ErrorHeader,
+  ErrorImage,
+  StateContainer,
+  PageBody,
+} from 'Styles/common.styles';
 
 interface Props {
   title: string;
@@ -10,12 +15,12 @@ interface Props {
 
 export default function EmptyState({ title, subtitle }: Props) {
   return (
-    <PageBody>
+    <StateContainer>
       <ErrorHeader>
         {title}
         <span>{subtitle}</span>
       </ErrorHeader>
       <ErrorImage src={AWSIllustrationsUrl + IllustrationNames.archiveEmpty} />
-    </PageBody>
+    </StateContainer>
   );
 }
