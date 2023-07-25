@@ -10,7 +10,6 @@ import { CardList, PageHeader } from 'Styles/common.styles';
 function Inbox() {
   const {
     isLoading,
-    isFetching,
     isError,
     data: dataFromApi,
   } = useConversations.useGetConversations();
@@ -20,7 +19,7 @@ function Inbox() {
   }, []);
 
   if (isError) return <ErrorState />;
-  else if (isLoading || isFetching) {
+  else if (isLoading) {
     return (
       <>
         <PageHeader>

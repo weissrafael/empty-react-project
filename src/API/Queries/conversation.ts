@@ -19,7 +19,7 @@ export const useFetchConversations = () => {
       );
       return response.data;
     },
-    { refetchOnWindowFocus: false }
+    { refetchOnWindowFocus: false, refetchInterval: 5000 }
   );
 };
 
