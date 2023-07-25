@@ -35,12 +35,22 @@ function Login() {
     }
   };
 
+  function isFirstCharBetween1And10(inputString: string): boolean {
+    if (inputString && !isNaN(parseInt(inputString[0], 10))) {
+      const firstChar: number = parseInt(inputString[0], 10);
+      if (firstChar >= 1 && firstChar <= 10) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   const handleLogin = () => {
     validateEmail();
     validatePassword();
     if (!usernameError && !passwordError) {
       let id = 7;
-      if (username.charAt(0) >= '1' && username.charAt(0) <= '10') {
+      if (isFirstCharBetween1And10(username)) {
         id = parseInt(username.charAt(0));
       }
       setLoggedUser({ id, name: '', lastSeenAt: '' });
