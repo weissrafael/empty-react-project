@@ -22,7 +22,7 @@ You will also see any lint errors in the console.
 
 ## Login
 
-type any email that starts with an integer from 1 to 10, that will be your user id! example: 3bram@bunq.com
+Type any email that starts with an integer from 1 to 10, that will be your user id! example: 3bram@bunq.com
 
 - 1 - Ali
 - 2 - Andre
