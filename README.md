@@ -7,24 +7,8 @@ This repository contains the frontend code for the Chat app, developed as part o
 
 In order to run the app locally, you need to have [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/) installed on your machine.
 Then you will need to install the dependencies by running the following command in the project directory:
-## Login
-
-type any email that starts with an integer from 1 to 10, that will be your user id! example: 3bram@bunq.com
-
-1 - ali
-2 - andre
-3 - bram
-4 - hilco
-5 - jesper
-6 - jordy
-7 - mdemaa
-8 - nick
-9 - sonnya
-10 - wessel
 
 ### `yarn install`
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -36,10 +20,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+## Login
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+type any email that starts with an integer from 1 to 10, that will be your user id! example: 3bram@bunq.com
+
+- 1 - Ali
+- 2 - Andre
+- 3 - Bram
+- 4 - Hilco
+- 5 - Jesper
+- 6 - Jordy
+- 7 - Mdemaa
+- 8 - Nick
+- 9 - Sonnya
+- 10 - Wessel
 
 ## App Features
 - [x] Enter a username + password to login
